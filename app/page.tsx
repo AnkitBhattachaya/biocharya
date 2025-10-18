@@ -85,21 +85,6 @@ export default function Home() {
   </div>
 </section>
 
-        {/* Hero image */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8 }}
-          className="flex-1 flex justify-center"
-        >
-          <img
-            src="/hero-image.png"
-            alt="BioCharya Biology Coaching"
-            className="rounded-2xl shadow-lg w-4/5 md:w-full"
-          />
-        </motion.div>
-      </section>
-
       {/* ===== COURSES SECTION ===== */}
       <section className="px-6 md:px-20 mb-16">
         <h2 className="text-3xl font-bold mb-6 text-center text-primary">
