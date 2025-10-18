@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-lightbg text-textdark">
 {/* ===== HERO SECTION ===== */}
-<section className="relative w-full overflow-hidden bg-gradient-to-b from-white to-green-50">
+<section className="relative w-full overflow-hidden bg-gradient-to-b from-green-50 via-white to-green-100">
   {/* Background Layer */}
   <div className="absolute inset-0">
     <img
