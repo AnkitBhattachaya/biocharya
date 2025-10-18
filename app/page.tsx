@@ -8,45 +8,82 @@ import CourseGrid from "../components/CourseGrid";
 export default function Home() {
   return (
     <main className="min-h-screen bg-lightbg text-textdark">
-      {/* ===== HERO SECTION ===== */}
-      <section className="flex flex-col-reverse md:flex-row items-center justify-between gap-10 py-16 px-6 md:px-20 bg-gradient-to-b from-white to-lightbg">
-        <div className="flex-1 space-y-6">
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-4xl md:text-5xl font-extrabold leading-tight"
-          >
-            Crack <span className="text-primary">NEET</span> & Board Exams with
-            <span className="text-accent"> Concept-Driven Biology</span>
-          </motion.h1>
-          <p className="text-gray-700 text-lg max-w-xl">
-            Led by <strong>Ankit Bhattacharya</strong>, BioCharya trains 500+
-            students with small batches, clear concepts, and exam-proven
-            strategies.
-          </p>
+{/* ===== HERO SECTION ===== */}
+<section className="relative w-full overflow-hidden bg-gradient-to-b from-white to-green-50">
+  {/* Background Layer */}
+  <div className="absolute inset-0">
+    <img
+      src="/hero-banner.jpg"
+      alt="BioCharya Biology Coaching Hero"
+      className="w-full h-full object-cover opacity-70"
+      loading="eager"
+    />
+    <div className="absolute inset-0 bg-gradient-to-r from-green-900/90 via-green-800/70 to-green-700/40" />
+  </div>
 
-          <div className="flex gap-4">
-            <Link
-              href="/demo"
-              className="bg-primary text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-900 transition"
-            >
-              Join Free Demo Class
-            </Link>
-            <Link
-              href="/courses"
-              className="border-2 border-primary text-primary px-6 py-3 rounded-lg font-semibold hover:bg-green-50 transition"
-            >
-              Explore Courses
-            </Link>
-          </div>
+  {/* Content Layer */}
+  <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-10 py-20 px-6 md:px-20 text-white">
+    {/* LEFT TEXT SECTION */}
+    <div className="flex-1 space-y-6 text-center md:text-left">
+      <motion.h1
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        className="text-4xl md:text-6xl font-extrabold leading-tight drop-shadow-lg"
+      >
+        Master <span className="text-green-300">Biology</span> with India’s Most
+        <br /> <span className="text-green-100">Practical Mentor</span>
+      </motion.h1>
 
-          <div className="flex gap-6 pt-4 text-sm text-gray-600">
-            <div>🎓 500+ Students</div>
-            <div>🏆 Small Batches</div>
-            <div>📍 Kolkata, India</div>
-          </div>
-        </div>
+      <p className="text-green-100 text-lg md:text-xl max-w-xl mx-auto md:mx-0 leading-relaxed">
+        Join <strong>500+ students</strong> learning Biology the smart, conceptual way
+        with <strong>Ankit Bhattacharya</strong> — your trusted guide for
+        <span className="text-green-200 font-semibold"> NEET & Board Success</span>.
+      </p>
+
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.4, duration: 0.6 }}
+        className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start pt-2"
+      >
+        <Link
+          href="/demo"
+          className="bg-white text-green-900 px-8 py-3 rounded-xl font-semibold shadow-md hover:scale-105 hover:bg-green-100 transition-all duration-300"
+        >
+          🎓 Join Free Demo Class
+        </Link>
+        <Link
+          href="/courses"
+          className="border border-white text-white px-8 py-3 rounded-xl font-semibold hover:bg-white/15 transition-all duration-300 hover:scale-105"
+        >
+          📘 Explore Courses
+        </Link>
+      </motion.div>
+
+      {/* Trust Indicators */}
+      <div className="flex flex-wrap gap-6 pt-6 justify-center md:justify-start text-sm text-green-100/90">
+        <div>🌱 Concept-Driven Learning</div>
+        <div>🏆 500+ Successful Students</div>
+        <div>📍 Dum Dum, Kolkata</div>
+      </div>
+    </div>
+
+    {/* RIGHT IMAGE SECTION */}
+    <motion.div
+      initial={{ opacity: 0, scale: 0.9 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.8 }}
+      className="flex-1 flex justify-center md:justify-end"
+    >
+      <img
+        src="/ankit-bhattacharya-portrait.png"
+        alt="Ankit Bhattacharya"
+        className="rounded-2xl shadow-2xl w-4/5 md:w-full max-w-sm md:max-w-md border-4 border-green-200 hover:scale-[1.02] transition-transform duration-500"
+      />
+    </motion.div>
+  </div>
+</section>
 
         {/* Hero image */}
         <motion.div
