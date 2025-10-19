@@ -7,7 +7,8 @@ import CourseGrid from "../components/CourseGrid";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-lightbg text-      {/* ===== HERO SECTION ===== */}
+    <main className="min-h-screen bg-lightbg text-      
+      {/* ===== HERO SECTION ===== */}
       <section className="flex flex-col-reverse md:flex-row items-center justify-between gap-10 py-16 px-6 md:px-20 bg-gradient-to-b from-white to-lightbg">
         <div className="flex-1 space-y-6">
           <motion.h1
