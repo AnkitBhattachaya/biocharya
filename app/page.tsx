@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Users, ClipboardCheck, Brain } from "lucide-react";
+import { BookOpen, Users, ClipboardCheck, Brain } from "lucide-react";
 import CourseGrid from "../components/CourseGrid";
 
 export default function Home() {
