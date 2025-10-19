@@ -1,15 +1,16 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
-import { Users, ClipboardCheck, Brain } from "lucide-react";
+import { BookOpen, Users, ClipboardCheck, Brain } from "lucide-react";
 import CourseGrid from "../components/CourseGrid";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-white text-textdark">
+    <main className="min-h-screen bg-lightbg text-textdark">
       {/* ===== HERO SECTION ===== */}
-      <section className="flex flex-col-reverse md:flex-row items-center justify-between gap-10 py-16 px-6 md:px-20 bg-white overflow-hidden">
+      <section className="flex flex-col-reverse md:flex-row items-center justify-between gap-10 py-16 px-6 md:px-20 bg-gradient-to-b from-white to-green-50 overflow-hidden">
         {/* LEFT TEXT SECTION */}
         <motion.div
           initial={{ opacity: 0, x: -40 }}
@@ -21,9 +22,9 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-4xl md:text-5xl font-extrabold leading-tight text-primary"
+            className="text-4xl md:text-5xl font-extrabold leading-tight"
           >
-            Crack <span className="text-green-700">NEET</span> & Board Exams with
+            Crack <span className="text-primary">NEET</span> & Board Exams with
             <br />
             <span className="text-accent"> Concept-Driven Biology</span>
           </motion.h1>
@@ -35,8 +36,8 @@ export default function Home() {
             className="text-gray-700 text-lg max-w-xl mx-auto md:mx-0"
           >
             Led by <strong>Ankit Bhattacharya</strong>, BioCharya trains{" "}
-            <strong>500+ students</strong> through small batches, conceptual clarity,
-            and exam-proven strategies.
+            <strong>500+ students</strong> through small batches, conceptual clarity, and
+            exam-proven strategies.
           </motion.p>
 
           <motion.div
@@ -78,11 +79,13 @@ export default function Home() {
           transition={{ duration: 0.9, ease: "easeOut" }}
           className="flex-1 flex justify-center md:justify-end"
         >
-          <img
-            src="/app/hero-banner.png"
+          <Image
+            src="/hero-banner.png"
             alt="BioCharya | Hate Memorising Biology? NOT Anymore"
-            className="rounded-2xl shadow-xl w-full max-w-lg md:max-w-2xl object-cover border border-gray-200 hover:scale-[1.02] transition-transform duration-500"
-            loading="eager"
+            width={1000}
+            height={600}
+            priority
+            className="rounded-2xl shadow-2xl w-full max-w-lg md:max-w-2xl object-cover hover:scale-[1.02] transition-transform duration-500"
           />
         </motion.div>
       </section>
@@ -143,6 +146,52 @@ export default function Home() {
               <p className="text-gray-600 text-sm">{item.desc}</p>
             </motion.div>
           ))}
+        </div>
+      </motion.section>
+
+      {/* ===== MEET YOUR MENTOR ===== */}
+      <motion.section
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+        className="px-6 md:px-20 py-16 bg-white"
+      >
+        <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-10 items-center">
+          <motion.img
+            src="/ankit-bhattacharya.png"
+            alt="Ankit Bhattacharya"
+            className="rounded-2xl shadow-lg w-full object-cover"
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+          />
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <h2 className="text-3xl font-bold mb-4 text-primary">
+              Meet Your Mentor
+            </h2>
+            <p className="text-gray-700 leading-relaxed mb-4">
+              Hi, I’m <strong>Ankit Bhattacharya</strong> — a Biology educator
+              helping students from Class 9 to NEET crack exams with clarity and
+              confidence. BioCharya is built around one promise:
+              <em> Concept. First. Always.</em>
+            </p>
+            <p className="text-gray-700 mb-6">
+              Join our growing community of learners and experience biology like
+              never before.
+            </p>
+            <Link
+              href="https://wa.me/917980862920"
+              target="_blank"
+              className="bg-accent text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-600 transition"
+            >
+              Message on WhatsApp
+            </Link>
+          </motion.div>
         </div>
       </motion.section>
     </main>
