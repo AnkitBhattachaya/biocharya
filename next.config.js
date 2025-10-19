@@ -2,7 +2,11 @@
 const nextConfig = {
   reactStrictMode: true,
   experimental: {
-    appDir: true
-  }
-}
-module.exports = nextConfig
+    // remove unsupported options like appDir
+  },
+  images: {
+    unoptimized: true, // forces Next.js to serve /public images directly
+  },
+};
+
+module.exports = nextConfig;
