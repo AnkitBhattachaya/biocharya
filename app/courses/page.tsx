@@ -8,34 +8,39 @@ const courses = [
   {
     title: "NEET Biology Mastery",
     description:
-      "Comprehensive NEET Biology course covering every chapter with PYQs, DPPs, and live mentoring.",
+      "Comprehensive NEET Biology course covering every chapter with DPPs, PYQs, and live mentoring.",
     image: "/courses/neet-biology.jpg",
-    link: "/demo",
+    slug: "neet-biology-mastery",
   },
   {
     title: "Class 12 CBSE Biology",
     description:
       "Master Class 12 Biology with concept-first learning, practical clarity, and exam-ready notes.",
     image: "/courses/class12.jpg",
-    link: "/demo",
+    slug: "class12-cbse-biology",
   },
   {
     title: "Class 11 CBSE Biology",
     description:
       "Build strong foundations in Class 11 Biology with weekly practice tests and concept-based teaching.",
     image: "/courses/class11.jpg",
-    link: "/demo",
+    slug: "class11-cbse-biology",
   },
   {
     title: "ICSE / WB Board Biology",
     description:
       "Board-focused Biology course with conceptual depth, visuals, and question-based learning.",
     image: "/courses/icse-board.jpg",
-    link: "/demo",
+    slug: "icse-wb-biology",
   },
 ];
 
 export default function CoursesPage() {
+  const whatsappLink = (courseName: string) =>
+    `https://wa.me/917980862920?text=Hi%20Ankit!%20I%27m%20interested%20in%20joining%20the%20${encodeURIComponent(
+      courseName
+    )}%20course%20from%20BioCharya.`;
+
   return (
     <main className="pt-32 pb-20 px-6 md:px-20 bg-lightbg min-h-screen">
       <motion.h1
@@ -66,16 +71,28 @@ export default function CoursesPage() {
               />
             </div>
             <div className="p-6 space-y-3">
-              <h2 className="text-xl font-semibold text-green-800">
-                {course.title}
-              </h2>
-              <p className="text-gray-600 text-sm">{course.description}</p>
-              <Link
-                href={course.link}
-                className="inline-block mt-4 bg-green-700 text-white px-5 py-2 rounded-lg font-semibold hover:bg-green-800 transition"
-              >
-                Enroll Now
+              <Link href={`/courses/${course.slug}`}>
+                <h2 className="text-xl font-semibold text-green-800 hover:text-green-600 transition">
+                  {course.title}
+                </h2>
               </Link>
+              <p className="text-gray-600 text-sm">{course.description}</p>
+
+              <div className="flex gap-3 pt-3">
+                <Link
+                  href={`/courses/${course.slug}`}
+                  className="bg-green-700 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-green-800 transition"
+                >
+                  View Details
+                </Link>
+                <Link
+                  href={whatsappLink(course.title)}
+                  target="_blank"
+                  className="border border-green-700 text-green-700 px-4 py-2 rounded-lg text-sm font-semibold hover:bg-green-50 transition"
+                >
+                  WhatsApp
+                </Link>
+              </div>
             </div>
           </motion.div>
         ))}
