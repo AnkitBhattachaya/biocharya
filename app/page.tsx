@@ -72,19 +72,19 @@ export default function Home() {
         </motion.div>
 
         {/* RIGHT IMAGE SECTION */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8 }}
-          className="flex-1 flex justify-center md:justify-end"
-        >
-          <img
-            src="/ankit-bhattacharya.png"
-            alt="Ankit Bhattacharya"
-            className="rounded-2xl shadow-2xl w-4/5 md:w-full max-w-sm md:max-w-md border-4 border-green-100 hover:scale-[1.02] transition-transform duration-500"
-          />
-        </motion.div>
-      </section>
+<motion.div
+  initial={{ opacity: 0, scale: 0.95, x: 30 }}
+  animate={{ opacity: 1, scale: 1, x: 0 }}
+  transition={{ duration: 0.9, ease: "easeOut" }}
+  className="flex-1 flex justify-center md:justify-end"
+>
+  <img
+    src="/hero-banner.png"
+    alt="BioCharya | Hate Memorising Biology? NOT Anymore"
+    className="rounded-2xl shadow-2xl w-full max-w-lg md:max-w-2xl object-cover hover:scale-[1.02] transition-transform duration-500"
+    loading="eager"
+  />
+</motion.div>
 
       {/* ===== COURSES SECTION ===== */}
       <motion.section
