@@ -7,11 +7,11 @@ import Image from "next/image";
 // 🎬 Video Testimonials (editable later)
 const videoTestimonials = [
   {
-    title: "From Doubt to Ranker 💪",
+    title: "From Hero to Ranker,DR... ",
     video: "https://www.youtube.com/embed/dQw4w9WgXcQ", // Replace later with your actual video
   },
   {
-    title: "I Finally Understood Biology 🔬",
+    title: "I Finally Understood Biology ",
     video: "https://www.youtube.com/embed/dQw4w9WgXcQ",
   },
   {
