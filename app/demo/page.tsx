@@ -1,67 +1,59 @@
-'use client'
-import React, { useState } from 'react'
+"use client";
+
+import { motion } from "framer-motion";
 
 export default function DemoPage() {
-  const [name, setName] = useState('')
-  const [whatsapp, setWhatsapp] = useState('')
-  const [cls, setCls] = useState('Class 11')
-  const [mode, setMode] = useState('Offline')
-  const [msg, setMsg] = useState('')
-
-  async function submit(e: React.FormEvent) {
-    e.preventDefault()
-    setMsg('Saving...')
-    try {
-      const res = await fetch('/api/leads', {
-        method: 'POST',
-        headers: {'content-type':'application/json'},
-        body: JSON.stringify({ name, whatsapp, class: cls, mode })
-      })
-      if (res.ok) {
-        setMsg('Saved ✅')
-        setName(''); setWhatsapp('')
-      } else {
-        setMsg('Error saving')
-      }
-    } catch(err) {
-      setMsg('Network error')
-    }
-  }
-
   return (
-    <div className="max-w-xl mx-auto">
-      <h1 className="text-2xl font-bold mb-4">Join Free Demo Class</h1>
-      <form onSubmit={submit} className="space-y-4">
-        <div>
-          <label className="block font-medium">Name</label>
-          <input value={name} onChange={e=>setName(e.target.value)} className="w-full p-2 border rounded" required />
-        </div>
-        <div>
-          <label className="block font-medium">WhatsApp</label>
-          <input value={whatsapp} onChange={e=>setWhatsapp(e.target.value)} className="w-full p-2 border rounded" placeholder="91XXXXXXXXXX" required />
-        </div>
-        <div>
-          <label className="block font-medium">Class / Exam</label>
-          <select value={cls} onChange={e=>setCls(e.target.value)} className="w-full p-2 border rounded">
-            <option>Class 9 CBSE</option>
-            <option>Class 10 CBSE</option>
-            <option>Class 11 CBSE</option>
-            <option>Class 12 CBSE</option>
-            <option>NEET</option>
-          </select>
-        </div>
-        <div>
-          <label className="block font-medium">Mode</label>
-          <select value={mode} onChange={e=>setMode(e.target.value)} className="w-full p-2 border rounded">
-            <option>Offline</option>
-            <option>Online</option>
-          </select>
-        </div>
-        <div>
-          <button className="bg-primary text-white px-4 py-2 rounded">Submit</button>
-        </div>
-        <div className="text-sm text-gray-600">{msg}</div>
-      </form>
-    </div>
-  )
+    <main className="min-h-screen bg-lightbg flex flex-col items-center justify-center text-center px-6 py-16">
+      <motion.h1
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        className="text-4xl md:text-5xl font-extrabold text-primary mb-6"
+      >
+        Join Our Demo Class
+      </motion.h1>
+
+      <motion.p
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.2, duration: 0.6 }}
+        className="text-gray-700 text-lg mb-8 max-w-2xl"
+      >
+        Experience concept-driven Biology learning with{" "}
+        <strong>BioCharya</strong>.  
+        Scan the QR below or message us directly to enroll.
+      </motion.p>
+
+      <motion.img
+        src="/Upi-QR.png"
+        alt="Scan to Pay BioCharya"
+        className="w-64 h-64 rounded-xl shadow-lg border-4 border-green-200 mb-6 hover:scale-105 transition-transform duration-300"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.4, duration: 0.8 }}
+      />
+
+      <motion.a
+        href="https://wa.me/917980862920?text=Hey%20Ankit,%20I%20want%20to%20enroll%20for%20the%20course.%20How%20can%20I%20pay?"
+        target="_blank"
+        rel="noopener noreferrer"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.6, duration: 0.6 }}
+        className="inline-block bg-green-600 text-white px-8 py-4 rounded-xl text-lg font-semibold shadow-md hover:bg-green-700 hover:scale-105 transition-all duration-300"
+      >
+        🟢 Enroll Now on WhatsApp
+      </motion.a>
+
+      <motion.p
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1, duration: 0.8 }}
+        className="text-gray-500 text-sm mt-6"
+      >
+        After payment, you’ll receive confirmation and class access via WhatsApp.
+      </motion.p>
+    </main>
+  );
 }
