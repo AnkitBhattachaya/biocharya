@@ -3,6 +3,7 @@
 import { useParams } from "next/navigation";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { useState } from "react";
 
 const courseData: any = {
   "neet-biology-mastery": {
@@ -61,6 +62,49 @@ const courseData: any = {
 export default function CourseDetailPage() {
   const { slug } = useParams();
   const course = courseData[slug as string];
+  const [formData, setFormData] = useState({
+    name: "",
+    whatsapp: "",
+    className: "",
+  });
+  const [status, setStatus] = useState("");
+
+  const handleChange = (e: any) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
+    setStatus("Submitting...");
+
+    try {
+      await fetch(
+        "https://script.google.com/macros/s/AKfycbxgdohiqbTgM-kdicepIz2aQUcxDc8CwbxwA-8_pisl1RWRtrBBu5XQ9tqTj5aOYejh/exec",
+        {
+          method: "POST",
+          body: JSON.stringify({
+            ...formData,
+            course: course.title,
+          }),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      setStatus("✅ Submitted successfully!");
+      setFormData({ name: "", whatsapp: "", className: "" });
+      setTimeout(() => {
+        window.open(
+          `https://wa.me/917980862920?text=${encodeURIComponent(
+            course.whatsappMsg
+          )}`,
+          "_blank"
+        );
+      }, 800);
+    } catch (err) {
+      setStatus("❌ Something went wrong!");
+    }
+  };
 
   if (!course)
     return <div className="p-20 text-center text-gray-600">Course not found.</div>;
@@ -98,19 +142,52 @@ export default function CourseDetailPage() {
           </ul>
 
           <p className="text-lg font-semibold">
-            💰 <span className="text-green-700">Course Fee:</span>{" "}
-            {course.price}
+            💰 <span className="text-green-700">Course Fee:</span> {course.price}
           </p>
 
-          <Link
-            href={`https://wa.me/917980862920?text=${encodeURIComponent(
-              course.whatsappMsg
-            )}`}
-            target="_blank"
-            className="inline-block bg-green-700 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-800 transition"
+          {/* --- Lead Capture Form --- */}
+          <form
+            onSubmit={handleSubmit}
+            className="space-y-4 bg-green-50 p-5 rounded-lg shadow-md"
           >
-            Enroll Now via WhatsApp
-          </Link>
+            <h3 className="font-semibold text-lg text-green-700">
+              Interested? Fill in your details below 👇
+            </h3>
+            <input
+              type="text"
+              name="name"
+              placeholder="Your Name"
+              value={formData.name}
+              onChange={handleChange}
+              required
+              className="w-full border border-gray-300 rounded-lg px-3 py-2"
+            />
+            <input
+              type="tel"
+              name="whatsapp"
+              placeholder="WhatsApp Number"
+              value={formData.whatsapp}
+              onChange={handleChange}
+              required
+              className="w-full border border-gray-300 rounded-lg px-3 py-2"
+            />
+            <input
+              type="text"
+              name="className"
+              placeholder="Class (e.g. 11 CBSE, NEET)"
+              value={formData.className}
+              onChange={handleChange}
+              required
+              className="w-full border border-gray-300 rounded-lg px-3 py-2"
+            />
+            <button
+              type="submit"
+              className="w-full bg-green-700 text-white py-2 rounded-lg font-semibold hover:bg-green-800 transition"
+            >
+              Submit & Chat on WhatsApp
+            </button>
+            {status && <p className="text-sm text-center text-gray-700">{status}</p>}
+          </form>
         </div>
       </div>
     </main>
