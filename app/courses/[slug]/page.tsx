@@ -1,91 +1,118 @@
 "use client";
 
 import { useParams } from "next/navigation";
-import Link from "next/link";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
-const courses = [
-  {
-    slug: "neet-biology-mastery",
-    title: "NEET Biology Mastery Program",
-    description:
-      "Crack NEET Biology with in-depth concept clarity, NCERT-based MCQs, and chapter-wise tests.",
-    duration: "12 Months",
-    level: "Advanced",
-    image: "/courses/neet-biology.jpg",
+const courseData: any = {
+  "neet-biology-mastery": {
+    title: "NEET Biology Mastery",
+    videoUrl: "https://www.youtube.com/embed/MVPTGNGiI-4",
+    price: "₹ 7999",
+    highlights: [
+      "Complete NCERT coverage",
+      "Topic-wise DPPs & PYQs",
+      "Live + Recorded classes",
+      "Weekly tests & progress tracking",
+    ],
+    whatsappMsg:
+      "Hey Ankit, I want to enroll for the NEET Biology Mastery course.",
   },
-  {
-    slug: "class11-cbse-biology",
-    title: "Class 11 CBSE Biology",
-    description:
-      "Learn every topic from the Class 11 CBSE syllabus with conceptual clarity and exam-based preparation.",
-    duration: "12 Months",
-    level: "Intermediate",
-    image: "/courses/class11.jpg",
-  },
-  {
-    slug: "class12-cbse-biology",
+  "class12-cbse-biology": {
     title: "Class 12 CBSE Biology",
-    description:
-      "Score 90+ in Boards and strengthen your NEET foundation with concept-driven learning.",
-    duration: "12 Months",
-    level: "Advanced",
-    image: "/courses/class12.jpg",
+    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    price: "₹ 4999",
+    highlights: [
+      "Board syllabus mastery",
+      "NCERT exemplar practice",
+      "Test series & revision notes",
+      "Doubt-clearing sessions",
+    ],
+    whatsappMsg:
+      "Hey Ankit, I want to join the Class 12 CBSE Biology course.",
   },
-];
+  "class11-cbse-biology": {
+    title: "Class 11 CBSE Biology",
+    videoUrl: "https://www.youtube.com/embed/nlT8P9KC3s0",
+    price: "₹ 4499",
+    highlights: [
+      "Strong NEET foundations",
+      "Concept-driven modules",
+      "Weekly assignments",
+      "One-on-one doubt solving",
+    ],
+    whatsappMsg:
+      "Hey Ankit, I want to join the Class 11 CBSE Biology course.",
+  },
+  "icse-wb-biology": {
+    title: "ICSE / WB Board Biology",
+    videoUrl: "https://www.youtube.com/embed/NpEaa2P7qZI",
+    price: "₹ 3999",
+    highlights: [
+      "Chapter-wise visual explanations",
+      "Board pattern questions",
+      "Practical concept clarity",
+      "Weekly mock tests",
+    ],
+    whatsappMsg: "Hey Ankit, I want to join the ICSE/WB Biology course.",
+  },
+};
 
-export default function CourseDetails() {
+export default function CourseDetailPage() {
   const { slug } = useParams();
-  const course = courses.find((c) => c.slug === slug);
+  const course = courseData[slug as string];
 
-  if (!course) {
-    return (
-      <div className="min-h-screen flex items-center justify-center text-center text-gray-700">
-        <div>
-          <h1 className="text-3xl font-bold mb-4">Course Not Found</h1>
-          <Link href="/courses" className="text-primary hover:underline">
-            ← Back to Courses
+  if (!course)
+    return <div className="p-20 text-center text-gray-600">Course not found.</div>;
+
+  return (
+    <main className="min-h-screen bg-white py-20 px-6 md:px-20">
+      <motion.h1
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        className="text-4xl font-bold text-green-800 text-center mb-8"
+      >
+        {course.title}
+      </motion.h1>
+
+      <div className="grid md:grid-cols-2 gap-10 items-start max-w-6xl mx-auto">
+        <motion.iframe
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8 }}
+          src={course.videoUrl}
+          title="Course Demo Video"
+          allowFullScreen
+          className="rounded-2xl shadow-lg w-full aspect-video"
+        ></motion.iframe>
+
+        <div className="space-y-6">
+          <h2 className="text-2xl font-semibold text-green-700">
+            What You’ll Learn
+          </h2>
+          <ul className="list-disc pl-6 space-y-2 text-gray-700">
+            {course.highlights.map((h: string, i: number) => (
+              <li key={i}>{h}</li>
+            ))}
+          </ul>
+
+          <p className="text-lg font-semibold">
+            💰 <span className="text-green-700">Course Fee:</span>{" "}
+            {course.price}
+          </p>
+
+          <Link
+            href={`https://wa.me/917980862920?text=${encodeURIComponent(
+              course.whatsappMsg
+            )}`}
+            target="_blank"
+            className="inline-block bg-green-700 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-800 transition"
+          >
+            Enroll Now via WhatsApp
           </Link>
         </div>
       </div>
-    );
-  }
-
-  return (
-    <main className="min-h-screen bg-gradient-to-b from-white to-green-50 py-16 px-6 md:px-20">
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className="max-w-5xl mx-auto grid md:grid-cols-2 gap-10 items-center"
-      >
-        <img
-          src={course.image}
-          alt={course.title}
-          className="rounded-2xl shadow-2xl w-full object-cover"
-        />
-
-        <div>
-          <h1 className="text-4xl font-bold text-primary mb-4">{course.title}</h1>
-          <p className="text-gray-700 mb-6">{course.description}</p>
-          <div className="space-y-2 mb-6">
-            <p>
-              <strong>Duration:</strong> {course.duration}
-            </p>
-            <p>
-              <strong>Level:</strong> {course.level}
-            </p>
-          </div>
-
-          <Link
-            href="https://wa.me/917980862920"
-            target="_blank"
-            className="inline-block bg-primary text-white px-8 py-3 rounded-lg font-semibold shadow-md hover:scale-105 hover:bg-green-800 transition-all duration-300"
-          >
-            Enroll Now
-          </Link>
-        </div>
-      </motion.div>
     </main>
   );
 }
