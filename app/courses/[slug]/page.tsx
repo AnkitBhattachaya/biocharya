@@ -1,78 +1,46 @@
 "use client";
 
-import { useParams } from "next/navigation";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { useState } from "react";
+import { CheckCircle, XCircle } from "lucide-react";
 
-const courseData: any = {
-  "neet-biology-mastery": {
-    title: "NEET Biology Mastery",
-    videoUrl: "https://www.youtube.com/embed/MVPTGNGiI-4",
-    price: "₹ 7999",
-    highlights: [
-      "Complete NCERT coverage",
-      "Topic-wise DPPs & PYQs",
-      "Live + Recorded classes",
-      "Weekly tests & progress tracking",
-    ],
-    whatsappMsg:
-      "Hey Ankit, I want to enroll for the NEET Biology Mastery course.",
-  },
-  "class12-cbse-biology": {
-    title: "Class 12 CBSE Biology",
-    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-    price: "₹ 4999",
-    highlights: [
-      "Board syllabus mastery",
+export default function CourseDetailsPage({ params }: any) {
+  const courseSlug = params.slug;
+
+  // Example data – you can expand these later
+  const course = {
+    title:
+      courseSlug === "neet-biology-mastery"
+        ? "NEET Biology Mastery"
+        : courseSlug === "class12-cbse-biology"
+        ? "Class 12 CBSE Biology"
+        : courseSlug === "class11-cbse-biology"
+        ? "Class 11 CBSE Biology"
+        : "ICSE/WB Biology",
+    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", // replace later
+    price: "₹4999",
+    features: [
       "NCERT exemplar practice",
       "Test series & revision notes",
       "Doubt-clearing sessions",
     ],
-    whatsappMsg:
-      "Hey Ankit, I want to join the Class 12 CBSE Biology course.",
-  },
-  "class11-cbse-biology": {
-    title: "Class 11 CBSE Biology",
-    videoUrl: "https://www.youtube.com/embed/nlT8P9KC3s0",
-    price: "₹ 4499",
-    highlights: [
-      "Strong NEET foundations",
-      "Concept-driven modules",
-      "Weekly assignments",
-      "One-on-one doubt solving",
-    ],
-    whatsappMsg:
-      "Hey Ankit, I want to join the Class 11 CBSE Biology course.",
-  },
-  "icse-wb-biology": {
-    title: "ICSE / WB Board Biology",
-    videoUrl: "https://www.youtube.com/embed/NpEaa2P7qZI",
-    price: "₹ 3999",
-    highlights: [
-      "Chapter-wise visual explanations",
-      "Board pattern questions",
-      "Practical concept clarity",
-      "Weekly mock tests",
-    ],
-    whatsappMsg: "Hey Ankit, I want to join the ICSE/WB Biology course.",
-  },
-};
+  };
 
-export default function CourseDetailPage() {
-  const { slug } = useParams();
-  const course = courseData[slug as string];
   const [formData, setFormData] = useState({
     name: "",
     whatsapp: "",
     className: "",
   });
+
   const [status, setStatus] = useState("");
 
   const handleChange = (e: any) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
   };
 
+  // ✅ Form submission handler
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     setStatus("Submitting...");
@@ -82,6 +50,7 @@ export default function CourseDetailPage() {
         "https://script.google.com/macros/s/AKfycbxgdohiqbTgM-kdicepIz2aQUcxDc8CwbxwA-8_pisl1RWRtrBBu5XQ9tqTj5aOYejh/exec",
         {
           method: "POST",
+          mode: "no-cors",
           body: JSON.stringify({
             ...formData,
             course: course.title,
@@ -91,68 +60,69 @@ export default function CourseDetailPage() {
           },
         }
       );
+
       setStatus("✅ Submitted successfully!");
       setFormData({ name: "", whatsapp: "", className: "" });
-      setTimeout(() => {
-        window.open(
-          `https://wa.me/917980862920?text=${encodeURIComponent(
-            course.whatsappMsg
-          )}`,
-          "_blank"
-        );
-      }, 800);
-    } catch (err) {
+    } catch (error) {
+      console.error(error);
       setStatus("❌ Something went wrong!");
     }
   };
 
-  if (!course)
-    return <div className="p-20 text-center text-gray-600">Course not found.</div>;
+  // ✅ WhatsApp redirect
+  const handleWhatsApp = () => {
+    const text = `Hey Ankit! I’m interested in the ${course.title} course.`;
+    const link = `https://wa.me/917980862920?text=${encodeURIComponent(text)}`;
+    window.open(link, "_blank");
+  };
 
   return (
-    <main className="min-h-screen bg-white py-20 px-6 md:px-20">
+    <main className="pt-28 pb-20 px-6 md:px-20 bg-lightbg min-h-screen">
       <motion.h1
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="text-4xl font-bold text-green-800 text-center mb-8"
+        className="text-4xl md:text-5xl font-bold text-center text-green-800 mb-10"
       >
         {course.title}
       </motion.h1>
 
-      <div className="grid md:grid-cols-2 gap-10 items-start max-w-6xl mx-auto">
-        <motion.iframe
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8 }}
-          src={course.videoUrl}
-          title="Course Demo Video"
-          allowFullScreen
-          className="rounded-2xl shadow-lg w-full aspect-video"
-        ></motion.iframe>
+      {/* ===== VIDEO PREVIEW ===== */}
+      <div className="max-w-4xl mx-auto mb-12">
+        <div className="aspect-w-16 aspect-h-9 rounded-xl overflow-hidden shadow-lg">
+          <iframe
+            className="w-full h-[400px] rounded-xl"
+            src={course.videoUrl}
+            title="Course Preview"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          ></iframe>
+        </div>
+      </div>
 
-        <div className="space-y-6">
-          <h2 className="text-2xl font-semibold text-green-700">
-            What You’ll Learn
-          </h2>
-          <ul className="list-disc pl-6 space-y-2 text-gray-700">
-            {course.highlights.map((h: string, i: number) => (
-              <li key={i}>{h}</li>
-            ))}
-          </ul>
+      {/* ===== COURSE DETAILS ===== */}
+      <div className="max-w-4xl mx-auto bg-white p-8 rounded-2xl shadow-md border border-gray-100 space-y-6">
+        <h2 className="text-2xl font-semibold text-green-800">Course Includes:</h2>
+        <ul className="list-disc list-inside text-gray-700 space-y-2">
+          {course.features.map((f, i) => (
+            <li key={i}>{f}</li>
+          ))}
+        </ul>
 
-          <p className="text-lg font-semibold">
-            💰 <span className="text-green-700">Course Fee:</span> {course.price}
-          </p>
+        <p className="text-lg font-semibold text-green-800 flex items-center gap-2">
+          💰 Course Fee: <span className="text-black">{course.price}</span>
+        </p>
 
-          {/* --- Lead Capture Form --- */}
+        {/* ===== ENROLLMENT FORM ===== */}
+        <div className="bg-green-50 p-6 rounded-xl shadow-inner">
+          <h3 className="text-lg font-semibold text-green-800 mb-3">
+            Interested? Fill in your details below 👇
+          </h3>
+
           <form
             onSubmit={handleSubmit}
-            className="space-y-4 bg-green-50 p-5 rounded-lg shadow-md"
+            className="space-y-4 flex flex-col max-w-md"
           >
-            <h3 className="font-semibold text-lg text-green-700">
-              Interested? Fill in your details below 👇
-            </h3>
             <input
               type="text"
               name="name"
@@ -160,7 +130,7 @@ export default function CourseDetailPage() {
               value={formData.name}
               onChange={handleChange}
               required
-              className="w-full border border-gray-300 rounded-lg px-3 py-2"
+              className="p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-600 outline-none"
             />
             <input
               type="tel"
@@ -169,25 +139,48 @@ export default function CourseDetailPage() {
               value={formData.whatsapp}
               onChange={handleChange}
               required
-              className="w-full border border-gray-300 rounded-lg px-3 py-2"
+              className="p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-600 outline-none"
             />
             <input
               type="text"
               name="className"
-              placeholder="Class (e.g. 11 CBSE, NEET)"
+              placeholder="Class (e.g., Class 11)"
               value={formData.className}
               onChange={handleChange}
               required
-              className="w-full border border-gray-300 rounded-lg px-3 py-2"
+              className="p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-600 outline-none"
             />
-            <button
-              type="submit"
-              className="w-full bg-green-700 text-white py-2 rounded-lg font-semibold hover:bg-green-800 transition"
-            >
-              Submit & Chat on WhatsApp
-            </button>
-            {status && <p className="text-sm text-center text-gray-700">{status}</p>}
+
+            <div className="flex flex-col sm:flex-row gap-3 mt-3">
+              <button
+                type="submit"
+                className="bg-green-700 hover:bg-green-800 text-white px-6 py-3 rounded-lg font-semibold shadow-md transition-all duration-200"
+              >
+                Submit Details
+              </button>
+
+              <button
+                type="button"
+                onClick={handleWhatsApp}
+                className="border border-green-700 text-green-700 px-6 py-3 rounded-lg font-semibold hover:bg-green-50 transition-all duration-200"
+              >
+                💬 Chat on WhatsApp
+              </button>
+            </div>
           </form>
+
+          {/* Status message */}
+          {status && (
+            <div className="flex items-center gap-2 mt-4 text-sm font-medium">
+              {status.startsWith("✅") && (
+                <CheckCircle className="text-green-600 w-5 h-5" />
+              )}
+              {status.startsWith("❌") && (
+                <XCircle className="text-red-500 w-5 h-5" />
+              )}
+              <span>{status}</span>
+            </div>
+          )}
         </div>
       </div>
     </main>
