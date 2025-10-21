@@ -5,84 +5,123 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { BookOpen, Download, Youtube } from "lucide-react";
 
-// 🔹 Notes Data
 const allNotes = [
+  // ===== CLASS 9 CBSE =====
   {
-    title: "The Living World",
-    className: "Class 11 CBSE",
-    category: "Notes",
+    title: "Fundamental Unit of Life",
+    className: "Class 9 CBSE",
+    driveLink: "https://drive.google.com/file/d/your-link-here/view",
+  },
+  {
+    title: "Tissues",
+    className: "Class 9 CBSE",
+    driveLink: "https://drive.google.com/file/d/your-link-here/view",
+  },
+  {
+    title: "Diversity in Living Organisms",
+    className: "Class 9 CBSE",
+    driveLink: "https://drive.google.com/file/d/your-link-here/view",
+  },
+
+  // ===== CLASS 10 CBSE =====
+  {
+    title: "Life Processes",
+    className: "Class 10 CBSE",
+    driveLink: "https://drive.google.com/file/d/your-link-here/view",
+  },
+  {
+    title: "Control and Coordination",
+    className: "Class 10 CBSE",
+    driveLink: "https://drive.google.com/file/d/your-link-here/view",
+  },
+  {
+    title: "Heredity and Evolution",
+    className: "Class 10 CBSE",
+    driveLink: "https://drive.google.com/file/d/your-link-here/view",
+  },
+
+  // ===== CLASS 9 ICSE =====
+  {
+    title: "Cell: The Structural and Functional Unit of Life",
+    className: "Class 9 ICSE",
+    driveLink: "https://drive.google.com/file/d/your-link-here/view",
+  },
+  {
+    title: "Plant Physiology",
+    className: "Class 9 ICSE",
+    driveLink: "https://drive.google.com/file/d/your-link-here/view",
+  },
+
+  // ===== CLASS 10 ICSE =====
+  {
+    title: "Excretory System",
+    className: "Class 10 ICSE",
+    driveLink: "https://drive.google.com/file/d/your-link-here/view",
+  },
+  {
+    title: "Endocrine System",
+    className: "Class 10 ICSE",
+    driveLink: "https://drive.google.com/file/d/your-link-here/view",
+  },
+
+  // ===== WB Board =====
+  {
+    title: "Photosynthesis",
+    className: "Class 10 WB",
+    driveLink: "https://drive.google.com/file/d/your-link-here/view",
+  },
+  {
+    title: "Circulatory System",
+    className: "Class 9 WB",
+    driveLink: "https://drive.google.com/file/d/your-link-here/view",
+  },
+
+  // ===== NEET / Higher Level =====
+  {
+    title: "Human Reproduction",
+    className: "NEET Target",
     driveLink: "https://drive.google.com/file/d/your-link-here/view",
     videoLink: "https://www.youtube.com/watch?v=your-video",
-  },
-  {
-    title: "Biological Classification",
-    className: "Class 11 CBSE",
-    category: "Notes",
-    driveLink: "https://drive.google.com/file/d/your-link-here/view",
-  },
-  {
-    title: "Plant Kingdom",
-    className: "Class 11 CBSE",
-    category: "Notes",
-    driveLink: "https://drive.google.com/file/d/your-link-here/view",
-  },
-  {
-    title: "Human Physiology",
-    className: "Class 12 CBSE",
-    category: "Notes",
-    driveLink: "https://drive.google.com/file/d/your-link-here/view",
-  },
-  {
-    title: "Reproduction in Organisms",
-    className: "Class 12 CBSE",
-    category: "Notes",
-    driveLink: "https://drive.google.com/file/d/your-link-here/view",
   },
   {
     title: "Photosynthesis in Higher Plants",
     className: "NEET Target",
-    category: "Notes",
     driveLink: "https://drive.google.com/file/d/your-link-here/view",
-    videoLink: "https://www.youtube.com/watch?v=your-video",
   },
 ];
 
 export default function NotesClient() {
   const [selectedClass, setSelectedClass] = useState("All");
 
-  // ✅ Inject JSON-LD schema for SEO
+  const filteredNotes =
+    selectedClass === "All"
+      ? allNotes
+      : allNotes.filter((note) => note.className === selectedClass);
+
+  // SEO Schema Injection
   useEffect(() => {
     const script = document.createElement("script");
     script.type = "application/ld+json";
     script.innerHTML = JSON.stringify({
       "@context": "https://schema.org",
-      "@type": "EducationalOccupationalProgram",
-      name: "NEET Biology Notes by BioCharya",
+      "@type": "CollectionPage",
+      name: "Biology Notes | BioCharya",
       description:
-        "Concept-based Biology notes for NEET, Class 11 & 12 — created by Ankit Bhattacharya at BioCharya, Kolkata.",
-      hasCourse: allNotes.map((note) => ({
-        "@type": "Course",
-        name: note.title,
-        provider: {
-          "@type": "Person",
-          name: "Ankit Bhattacharya",
-          sameAs: "https://biocharya.in",
-        },
-      })),
+        "Comprehensive Biology notes for Classes 9–12 (CBSE, ICSE, WB) and NEET, curated by Ankit Bhattacharya.",
       provider: {
         "@type": "Organization",
         name: "BioCharya",
         url: "https://biocharya.in",
-        logo: "https://biocharya.in/logo.png",
       },
+      hasPart: allNotes.map((n) => ({
+        "@type": "CreativeWork",
+        name: n.title,
+        educationalLevel: n.className,
+        url: n.driveLink,
+      })),
     });
     document.head.appendChild(script);
   }, []);
-
-  const filteredNotes =
-    selectedClass === "All"
-      ? allNotes
-      : allNotes.filter((note) => note.className === selectedClass);
 
   return (
     <main className="pt-28 pb-20 bg-lightbg text-textdark min-h-screen">
@@ -93,41 +132,42 @@ export default function NotesClient() {
         className="text-center px-6 md:px-20 mb-10"
       >
         <h1 className="text-4xl md:text-5xl font-extrabold text-green-800 mb-4">
-          NEET & Board Biology Notes — Concept, Not Cramming 📘
+          Free Biology Notes — Class 9 to NEET 📚
         </h1>
         <p className="text-gray-700 text-lg max-w-2xl mx-auto">
-          Download high-quality Biology notes prepared by{" "}
-          <strong>Ankit Bhattacharya</strong> from BioCharya. Perfect for{" "}
-          <strong>NEET, Class 11 & 12</strong> students who want clarity and speed.
+          Download detailed, concept-driven notes by{" "}
+          <strong>Ankit Bhattacharya</strong> for{" "}
+          <strong>CBSE, ICSE, WB & NEET</strong>. Updated regularly and fully exam-oriented.
         </p>
-        <div className="mt-6">
-          <Link
-            href="/demo"
-            className="bg-green-700 text-white px-8 py-3 rounded-lg font-semibold shadow-md hover:scale-105 hover:bg-green-800 transition-all duration-300"
-          >
-            🎓 Join Free Demo Class
-          </Link>
-        </div>
       </motion.section>
 
+      {/* FILTER BUTTONS */}
       <section className="flex flex-wrap justify-center gap-4 mb-10 px-4">
-        {["All", "Class 11 CBSE", "Class 12 CBSE", "ICSE", "NEET Target"].map(
-          (cls) => (
-            <button
-              key={cls}
-              onClick={() => setSelectedClass(cls)}
-              className={`px-4 py-2 rounded-full border-2 font-medium transition-all duration-300 ${
-                selectedClass === cls
-                  ? "bg-green-700 text-white border-green-700"
-                  : "border-green-700 text-green-700 hover:bg-green-50"
-              }`}
-            >
-              {cls}
-            </button>
-          )
-        )}
+        {[
+          "All",
+          "Class 9 CBSE",
+          "Class 10 CBSE",
+          "Class 9 ICSE",
+          "Class 10 ICSE",
+          "Class 9 WB",
+          "Class 10 WB",
+          "NEET Target",
+        ].map((cls) => (
+          <button
+            key={cls}
+            onClick={() => setSelectedClass(cls)}
+            className={`px-4 py-2 rounded-full border-2 font-medium transition-all duration-300 ${
+              selectedClass === cls
+                ? "bg-green-700 text-white border-green-700"
+                : "border-green-700 text-green-700 hover:bg-green-50"
+            }`}
+          >
+            {cls}
+          </button>
+        ))}
       </section>
 
+      {/* NOTES GRID */}
       <motion.section
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -140,7 +180,7 @@ export default function NotesClient() {
             className="bg-white rounded-2xl shadow-md hover:shadow-xl p-6 border-t-4 border-green-600 hover:-translate-y-2 transition-all duration-300"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: index * 0.1, duration: 0.4 }}
+            transition={{ delay: index * 0.05, duration: 0.4 }}
             viewport={{ once: true }}
           >
             <div className="flex items-center justify-between mb-3">
