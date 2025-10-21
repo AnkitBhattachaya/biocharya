@@ -7,25 +7,24 @@ import Image from "next/image";
 // 🎬 Video Testimonials (editable later)
 const videoTestimonials = [
   {
-    title: "From Hero to Ranker,DR... ",
-    video: "https://www.youtube.com/embed/dQw4w9WgXcQ", // Replace later with your actual video
+    title: "From Hero to Ranker, DR...",
+    video: "https://www.youtube.com/embed/dQw4w9WgXcQ",
   },
   {
-    title: "I Finally Understood Biology ",
+    title: "I Finally Understood Biology 🔬",
     video: "https://www.youtube.com/embed/dQw4w9WgXcQ",
   },
   {
     title: "Boards & NEET, Both Cracked 🔥",
     video: "https://www.youtube.com/embed/dQw4w9WgXcQ",
   },
-  // Add up to 12 items or more
 ];
 
-// 💬 Text Testimonials
+// 💬 Text Testimonials (editable)
 const textTestimonials = [
   {
     name: "Riya Mandal",
-    image: "/students/riya.jpg", // Add actual image later
+    image: "/students/riya.jpg",
     text: "Before BioCharya, I memorized blindly. Now I understand biology deeply — I topped my school exams!",
   },
   {
@@ -37,6 +36,36 @@ const textTestimonials = [
     name: "Sohini Das",
     image: "/students/sohini.jpg",
     text: "Every concept became crystal clear. BioCharya is not just classes — it’s mentorship.",
+  },
+  {
+    name: "Rudra Chatterjee",
+    image: "/students/rudra.jpg",
+    text: "I was scared of Human Physiology — now it's my strongest unit. Sir’s daily quizzes really built my confidence!",
+  },
+  {
+    name: "Ananya Ghosh",
+    image: "/students/ananya.jpg",
+    text: "BioCharya gave me clarity like never before. Even the toughest NCERT lines started making sense.",
+  },
+  {
+    name: "Souvik Mukherjee",
+    image: "/students/souvik.jpg",
+    text: "Ankit Sir’s one-liners are pure gold. I revised everything in the last 15 days just from his notes!",
+  },
+  {
+    name: "Madhurima Pal",
+    image: "/students/madhurima.jpg",
+    text: "He doesn’t just teach — he makes you fall in love with Biology. Thank you for believing in us, sir!",
+  },
+  {
+    name: "Debopriya Dey",
+    image: "/students/debopriya.jpg",
+    text: "Joining BioCharya was the best decision of my NEET journey. Classes are fun, structured, and unforgettable.",
+  },
+  {
+    name: "Rohit Banerjee",
+    image: "/students/rohit.jpg",
+    text: "Sir’s way of connecting real-life logic to biology made me realize — I can actually do this!",
   },
 ];
 
@@ -121,7 +150,7 @@ export default function ResultsPage() {
               className="bg-white rounded-2xl shadow-md hover:shadow-xl p-6 border-t-4 border-green-700 transition-all duration-300 hover:-translate-y-2 text-center"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.1, duration: 0.5 }}
+              transition={{ delay: i * 0.05, duration: 0.5 }}
               viewport={{ once: true }}
             >
               <div className="w-20 h-20 mx-auto mb-4 relative rounded-full overflow-hidden border-2 border-green-600">
