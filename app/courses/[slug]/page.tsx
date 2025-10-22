@@ -1,6 +1,6 @@
 "use client";
 
-import CourseLayout from "../../../components/CourseLayout";
+import CourseLayout from "@/components/CourseLayout";
 
 interface Course {
   title: string;
@@ -11,7 +11,7 @@ interface Course {
   price: number;
 }
 
-const courses: Record<string, Course> = {
+const courseData: Record<string, Course> = {
   "neet-biology-mastery": {
     title: "NEET Biology Mastery",
     tagline: "Crack NEET with conceptual clarity and precision.",
@@ -67,7 +67,7 @@ export default function CourseDetailsPage({
 }: {
   params: { slug: string };
 }) {
-  const course = courses[params.slug];
+  const course = courseData[params.slug];
 
   if (!course) {
     return (
