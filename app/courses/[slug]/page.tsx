@@ -1,9 +1,15 @@
-"use client";
-
-import { useParams } from "next/navigation";
 import CourseLayout from "@/components/CourseLayout";
 
-const courseData: Record<string, any> = {
+interface Course {
+  title: string;
+  tagline: string;
+  image: string;
+  videoUrl: string;
+  points: string[];
+  price: number;
+}
+
+const courseData: Record<string, Course> = {
   "neet-biology-mastery": {
     title: "NEET Biology Mastery",
     tagline: "Crack NEET with conceptual clarity and precision.",
@@ -54,13 +60,14 @@ const courseData: Record<string, any> = {
   },
 };
 
-export default function CourseDetailsPage() {
-  const params = useParams();
-  const slug = params?.slug as string;
-  const course = courseData[slug];
+export default function CourseDetailsPage({
+  params,
+}: {
+  params: { slug: string };
+}) {
+  const course = courseData[params.slug];
 
   if (!course) {
-    console.warn("Slug not found:", slug);
     return (
       <div className="flex flex-col items-center justify-center min-h-screen text-gray-600">
         <p className="text-lg font-medium">⚠️ Course not available. Try another course.</p>
@@ -68,5 +75,5 @@ export default function CourseDetailsPage() {
     );
   }
 
-  return <CourseLayout {...course} slug={slug} />;
+  return <CourseLayout {...course} slug={params.slug} />;
 }
