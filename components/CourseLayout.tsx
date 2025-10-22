@@ -53,7 +53,7 @@ export default function CourseLayout({
         </div>
       </section>
 
-      {/* 🎥 Demo Video + Register Section */}
+     {/* 🎥 Demo Video + Register Section */}
 <section className="px-6 md:px-20 py-12 bg-white">
   <h2 className="text-2xl font-bold text-center text-green-800 mb-8">
     Watch a Demo & Register Now
@@ -78,20 +78,60 @@ export default function CourseLayout({
         Register Now 🚀
       </h3>
 
-      <form className="space-y-4">
+      <form
+        onSubmit={async (e) => {
+          e.preventDefault();
+          const form = e.target as HTMLFormElement;
+          const name = (form.elements.namedItem("name") as HTMLInputElement).value;
+          const whatsapp = (form.elements.namedItem("whatsapp") as HTMLInputElement).value;
+          const className = (form.elements.namedItem("className") as HTMLInputElement).value;
+
+          const data = {
+            name,
+            whatsapp,
+            className,
+            course: title,
+          };
+
+          try {
+            await fetch(
+              "https://script.google.com/macros/s/AKfycbxgdohiqbTgM-kdicepIz2aQUcxDc8CwbxwA-8_pisl1RWRtrBBu5XQ9tqTj5aOYejh/exec",
+              {
+                method: "POST",
+                mode: "no-cors",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(data),
+              }
+            );
+
+            alert("✅ Registration successful! We'll contact you soon on WhatsApp.");
+            form.reset();
+          } catch (error) {
+            alert("❌ Something went wrong! Please try again.");
+            console.error(error);
+          }
+        }}
+        className="space-y-4"
+      >
         <input
           type="text"
+          name="name"
           placeholder="Your Name"
+          required
           className="w-full p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-600 outline-none"
         />
         <input
           type="tel"
+          name="whatsapp"
           placeholder="WhatsApp Number"
+          required
           className="w-full p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-600 outline-none"
         />
         <input
           type="text"
-          placeholder="Class (e.g., Class 12)"
+          name="className"
+          placeholder="Class (e.g., Class 11)"
+          required
           className="w-full p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-600 outline-none"
         />
 
@@ -104,7 +144,9 @@ export default function CourseLayout({
           </button>
 
           <a
-            href="https://wa.me/917980862920?text=Hey%20Ankit!%20I%20want%20to%20join%20your%20Biology%20course."
+            href={`https://wa.me/917980862920?text=Hey%20Ankit!%20I%20want%20to%20join%20the%20${encodeURIComponent(
+              title
+            )}%20course.`}
             target="_blank"
             className="border border-green-700 text-green-700 px-6 py-3 rounded-lg font-semibold hover:bg-green-100 text-center"
           >
