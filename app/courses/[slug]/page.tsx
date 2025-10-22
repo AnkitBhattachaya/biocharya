@@ -17,7 +17,7 @@ export default function CourseDetailsPage({ params }: any) {
         ? "Class 12 CBSE Biology"
         : courseSlug === "class11-cbse-biology"
         ? "Class 11 CBSE Biology"
-        : "ICSE/WB Biology",
+        : "CBSE/ICSE Biology",
     videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", // replace later
     price: "₹4999",
     features: [
