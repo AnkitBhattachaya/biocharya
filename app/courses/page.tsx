@@ -30,7 +30,7 @@ const courses = [
     title: "CBSE / ICSE Biology",
     description:
       "Board-focused Biology course with conceptual depth, visuals, and question-based learning.",
-    image: "/courses/cbse-icse-biology-course-biocharya.png",
+    image: "/courses/cbse-icse-biology-course.png",
     slug: "cbse-icse-biology",
   },
 ];
