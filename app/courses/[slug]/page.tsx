@@ -1,72 +1,83 @@
 "use client";
 
+import { useParams } from "next/navigation";
 import CourseLayout from "@/components/CourseLayout";
 
-export default function CourseDetails({ params }: { params: { slug: string } }) {
-  const courses = [
-    {
-      slug: "neet-biology-mastery",
+export default function CourseDetailsPage() {
+  const { slug } = useParams();
+
+  const courses: any = {
+    "neet-biology-mastery": {
       title: "NEET Biology Mastery",
-      tagline: "Master NEET Biology like never before",
-      image: "/courses/neet-biology-course-biocharya.png",
+      tagline: "Crack NEET with conceptual clarity and precision.",
+      image: "/courses/neet-biology.png",
       videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
       points: [
         "Complete NEET syllabus coverage",
-        "Topic-wise DPPs and PYQs",
-        "Live mentorship & doubt sessions",
+        "Concept-based NCERT learning",
+        "Live tests & personal guidance",
       ],
       price: 9999,
     },
-    {
-      slug: "class12-cbse-biology",
+    "class12-cbse-biology": {
       title: "Class 12 CBSE Biology",
-      tagline: "Board + NEET focused learning",
-      image: "/courses/class12-biology-course-biocharya.png",
+      tagline: "Ace your boards with crystal-clear concepts.",
+      image: "/courses/class12.png",
       videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
       points: [
-        "Concept-first learning with NCERT focus",
-        "Weekly practice tests and chapter notes",
-        "Doubt clearing and mentor guidance",
+        "Complete NCERT coverage with examples",
+        "Board exam preparation & PYQs",
+        "Weekly tests and model papers",
       ],
       price: 4999,
     },
-    {
-      slug: "class11-cbse-biology",
+    "class11-cbse-biology": {
       title: "Class 11 CBSE Biology",
-      tagline: "Strong foundations for NEET and Boards",
-      image: "/courses/class11-biology-course-biocharya.png",
+      tagline: "Build your foundation for NEET and beyond.",
+      image: "/courses/class11.png",
       videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
       points: [
-        "Deep conceptual clarity from basics",
-        "Weekly chapter-wise tests and assignments",
-        "Bridge course for NEET foundation",
+        "Conceptual learning with interactive examples",
+        "Regular assignments & quizzes",
+        "Weekly mentor sessions",
       ],
       price: 3999,
     },
-    {
-      slug: "icse-wb-biology",
-      title: "CBSE/ICSE Biology",
-      tagline: "The foundation of excellence",
-      image: "/courses/cbse-icse-biology-course-biocharya.png",
+    "cbse-icse-biology": {
+      title: "CBSE / ICSE Biology",
+      tagline: "Strong foundation for boards and competitive exams.",
+      image: "/courses/cbse-icse.png",
       videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
       points: [
-        "Complete Board syllabus coverage",
-        "Interactive concept-based lessons",
-        "Focus on practical applications",
+        "Board-specific conceptual clarity",
+        "Smart notes & PYQ practice",
+        "Doubt clearing + interactive sessions",
       ],
       price: 2999,
     },
-  ];
+  };
 
-  const course = courses.find((c) => c.slug === params.slug);
+  const course = courses[slug as string];
 
   if (!course) {
     return (
-      <div className="flex flex-col items-center justify-center min-h-screen text-gray-600">
-        <p className="text-lg font-medium">Course not found 😔</p>
+      <div className="min-h-screen flex items-center justify-center text-center px-4">
+        <p className="text-2xl font-semibold text-gray-600">
+          ⚠️ Course not available. Please go back and try another course.
+        </p>
       </div>
     );
   }
 
-  return <CourseLayout {...course} />;
+  return (
+    <CourseLayout
+      title={course.title}
+      tagline={course.tagline}
+      image={course.image}
+      videoUrl={course.videoUrl}
+      points={course.points}
+      price={course.price}
+      slug={slug as string}
+    />
+  );
 }
