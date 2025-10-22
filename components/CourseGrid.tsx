@@ -1,31 +1,35 @@
-import CourseCard from './CourseCard'
+import CourseCard from './CourseCard';
 
 const SAMPLE = [
   {
     title: "NEET Target Batch",
     slug: "neet-biology-mastery",
     price: 9999,
-    desc: "Full syllabus NEET batch"
+    desc: "Full syllabus NEET batch",
+    image: "/courses/neet-biology-course-biocharya.png",
   },
   {
     title: "Class 12 CBSE Biology",
     slug: "class12-cbse-biology",
     price: 4999,
-    desc: "Board + NEET oriented"
+    desc: "Board + NEET oriented",
+    image: "/courses/class12-biology-course-biocharya.png",
   },
   {
     title: "Class 11 CBSE Biology",
     slug: "class11-cbse-biology",
     price: 3999,
-    desc: "Strong fundamentals for NEET"
+    desc: "Strong fundamentals for NEET",
+    image: "/courses/class11-biology-course-biocharya.png",
   },
   {
     title: "CBSE/ICSE Biology",
     slug: "cbse-icse-biology",
     price: 2999,
-    desc: "Board-focused foundation course"
-  }
-]
+    desc: "Board-focused foundation course",
+    image: "/courses/cbse-icse-biology-course-biocharya.png",
+  },
+];
 
 export default function CourseGrid() {
   return (
@@ -34,5 +38,5 @@ export default function CourseGrid() {
         <CourseCard key={c.slug} course={c} />
       ))}
     </div>
-  )
+  );
 }
