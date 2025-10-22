@@ -53,21 +53,68 @@ export default function CourseLayout({
         </div>
       </section>
 
-      {/* 🎥 Demo Video Section */}
-      <section className="px-6 md:px-20 py-12 bg-white">
-        <h2 className="text-2xl font-bold text-center text-green-800 mb-6">
-          Watch a Demo Session
-        </h2>
-        <div className="max-w-4xl mx-auto rounded-xl overflow-hidden shadow-lg">
-          <iframe
-            width="100%"
-            height="400"
-            src={videoUrl}
-            title="Demo Class"
-            allowFullScreen
-          ></iframe>
+      {/* 🎥 Demo Video + Register Section */}
+<section className="px-6 md:px-20 py-12 bg-white">
+  <h2 className="text-2xl font-bold text-center text-green-800 mb-8">
+    Watch a Demo & Register Now
+  </h2>
+
+  <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto items-start">
+    {/* Left — Video */}
+    <div className="rounded-xl overflow-hidden shadow-lg">
+      <iframe
+        width="100%"
+        height="300"
+        src={videoUrl}
+        title="Demo Class"
+        className="rounded-xl"
+        allowFullScreen
+      ></iframe>
+    </div>
+
+    {/* Right — Register Form */}
+    <div className="bg-green-50 p-6 rounded-xl shadow-inner border border-green-100">
+      <h3 className="text-xl font-semibold text-green-800 mb-3">
+        Register Now 🚀
+      </h3>
+
+      <form className="space-y-4">
+        <input
+          type="text"
+          placeholder="Your Name"
+          className="w-full p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-600 outline-none"
+        />
+        <input
+          type="tel"
+          placeholder="WhatsApp Number"
+          className="w-full p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-600 outline-none"
+        />
+        <input
+          type="text"
+          placeholder="Class (e.g., Class 12)"
+          className="w-full p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-600 outline-none"
+        />
+
+        <div className="flex flex-col sm:flex-row gap-3 mt-3">
+          <button
+            type="submit"
+            className="bg-green-700 hover:bg-green-800 text-white px-6 py-3 rounded-lg font-semibold shadow-md transition-all duration-200"
+          >
+            Submit
+          </button>
+
+          <a
+            href="https://wa.me/917980862920?text=Hey%20Ankit!%20I%20want%20to%20join%20your%20Biology%20course."
+            target="_blank"
+            className="border border-green-700 text-green-700 px-6 py-3 rounded-lg font-semibold hover:bg-green-100 text-center"
+          >
+            💬 WhatsApp
+          </a>
         </div>
-      </section>
+      </form>
+    </div>
+  </div>
+</section>
 
       {/* 📘 Course Includes */}
       <section className="px-6 md:px-20 py-12 bg-lightbg">
