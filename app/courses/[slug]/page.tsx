@@ -1,10 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import CourseLayout from "@/components/CourseLayout";
 
-const courses = {
+const courseData: Record<string, any> = {
   "neet-biology-mastery": {
     title: "NEET Biology Mastery",
     tagline: "Crack NEET with conceptual clarity and precision.",
@@ -57,30 +56,17 @@ const courses = {
 
 export default function CourseDetailsPage() {
   const params = useParams();
-  const [course, setCourse] = useState<any>(null);
-
-  useEffect(() => {
-    if (params?.slug && typeof params.slug === "string") {
-      const foundCourse = courses[params.slug];
-      setCourse(foundCourse || null);
-    }
-  }, [params]);
-
-  if (!params?.slug) {
-    return (
-      <div className="min-h-screen flex items-center justify-center text-gray-600 text-lg">
-        Loading course details...
-      </div>
-    );
-  }
+  const slug = params?.slug as string;
+  const course = courseData[slug];
 
   if (!course) {
+    console.warn("Slug not found:", slug);
     return (
-      <div className="min-h-screen flex items-center justify-center text-gray-600 text-lg">
-        ⚠️ Course not available. Please go back and try another course.
+      <div className="flex flex-col items-center justify-center min-h-screen text-gray-600">
+        <p className="text-lg font-medium">⚠️ Course not available. Try another course.</p>
       </div>
     );
   }
 
-  return <CourseLayout {...course} slug={params.slug} />;
+  return <CourseLayout {...course} slug={slug} />;
 }
