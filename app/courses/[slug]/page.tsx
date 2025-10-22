@@ -1,90 +1,72 @@
+"use client";
+
 import CourseLayout from "@/components/CourseLayout";
 
-const COURSE_DATA: Record<
-  string,
-  {
-    title: string;
-    tagline: string;
-    image: string;
-    videoUrl: string;
-    price: number;
-    points: string[];
-  }
-> = {
-  "neet-biology-mastery": {
-    title: "NEET Biology Target Batch",
-    tagline: "The ultimate NEET preparation experience",
-    image: "/courses/neet-biology-course-biocharya.png",
-    videoUrl: "https://www.youtube.com/embed/YOUR_VIDEO_ID",
-    price: 9999,
-    points: [
-      "Complete NEET syllabus with daily DPPs",
-      "Topic-wise practice and mock tests",
-      "Error analysis and performance tracking",
-      "Strategy sessions and doubt-clearing support",
-    ],
-  },
-  "class11-cbse-biology": {
-    title: "Class 11 CBSE Biology",
-    tagline: "Strong foundations for NEET and Boards",
-    image: "/courses/class11-biology-course-biocharya.png",
-    videoUrl: "https://www.youtube.com/embed/YOUR_VIDEO_ID",
-    price: 3999,
-    points: [
-      "Detailed NCERT + NEET coverage",
-      "Interactive DPPs and weekly tests",
-      "Doubt-solving classes every week",
-      "Application-based problem solving for NEET",
-    ],
-  },
-  "class12-cbse-biology": {
-    title: "Class 12 CBSE Biology",
-    tagline: "Master Class 12 Biology with concept clarity",
-    image: "/courses/class12-biology-course-biocharya.png",
-    videoUrl: "https://www.youtube.com/embed/YOUR_VIDEO_ID",
-    price: 4999,
-    points: [
-      "Complete Class 12 syllabus with NEET integration",
-      "Crash revisions & conceptual reinforcement",
-      "Previous year board & NEET question practice",
-      "Mentorship and performance tracking",
-    ],
-  },
-  "cbse-icse-biology": {
-    title: "CBSE/ICSE Biology",
-    tagline: "The foundation of excellence",
-    image: "/courses/cbse-icse-biology-course.png",
-    videoUrl: "https://www.youtube.com/embed/YOUR_VIDEO_ID",
-    price: 2999,
-    points: [
-      "Chapter-wise concept learning for Class 9 & 10",
-      "Board exam-focused question discussions",
-      "Regular tests & assignments",
-      "Doubt-solving sessions and personal mentorship",
-    ],
-  },
-};
+export default function CourseDetails({ params }: { params: { slug: string } }) {
+  const courses = [
+    {
+      slug: "neet-biology-mastery",
+      title: "NEET Biology Mastery",
+      tagline: "Master NEET Biology like never before",
+      image: "/courses/neet-biology-course-biocharya.png",
+      videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      points: [
+        "Complete NEET syllabus coverage",
+        "Topic-wise DPPs and PYQs",
+        "Live mentorship & doubt sessions",
+      ],
+      price: 9999,
+    },
+    {
+      slug: "class12-cbse-biology",
+      title: "Class 12 CBSE Biology",
+      tagline: "Board + NEET focused learning",
+      image: "/courses/class12-biology-course-biocharya.png",
+      videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      points: [
+        "Concept-first learning with NCERT focus",
+        "Weekly practice tests and chapter notes",
+        "Doubt clearing and mentor guidance",
+      ],
+      price: 4999,
+    },
+    {
+      slug: "class11-cbse-biology",
+      title: "Class 11 CBSE Biology",
+      tagline: "Strong foundations for NEET and Boards",
+      image: "/courses/class11-biology-course-biocharya.png",
+      videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      points: [
+        "Deep conceptual clarity from basics",
+        "Weekly chapter-wise tests and assignments",
+        "Bridge course for NEET foundation",
+      ],
+      price: 3999,
+    },
+    {
+      slug: "icse-wb-biology",
+      title: "CBSE/ICSE Biology",
+      tagline: "The foundation of excellence",
+      image: "/courses/cbse-icse-biology-course-biocharya.png",
+      videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      points: [
+        "Complete Board syllabus coverage",
+        "Interactive concept-based lessons",
+        "Focus on practical applications",
+      ],
+      price: 2999,
+    },
+  ];
 
-export default function CoursePage({ params }: { params: { slug: string } }) {
-  const course = COURSE_DATA[params.slug];
+  const course = courses.find((c) => c.slug === params.slug);
 
   if (!course) {
     return (
-      <main className="min-h-screen flex items-center justify-center text-gray-600 text-lg">
-        Course not found 😔
-      </main>
+      <div className="flex flex-col items-center justify-center min-h-screen text-gray-600">
+        <p className="text-lg font-medium">Course not found 😔</p>
+      </div>
     );
   }
 
-  return (
-    <CourseLayout
-      title={course.title}
-      tagline={course.tagline}
-      image={course.image}
-      videoUrl={course.videoUrl}
-      price={course.price}
-      slug={params.slug}
-      points={course.points}
-    />
-  );
+  return <CourseLayout {...course} />;
 }
