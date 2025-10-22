@@ -27,12 +27,12 @@ const courses = [
     slug: "class11-cbse-biology",
   },
   {
-    title: "CBSE/ICSE Board Biology",
-    description:
-      "Board-focused Biology course with conceptual depth, visuals, and question-based learning.",
-    image: "/courses/cbse-icse-biology-course-biocharya.png",
-    slug: "icse-wb-biology",
-  },
+  title: "CBSE/ICSE Board Biology",
+  description:
+    "Board-focused Biology course with conceptual depth, visuals, and question-based learning.",
+  image: "/courses/cbse-icse-biology-course-biocharya.png",
+  slug: "cbse-icse-biology", // ✅ updated slug
+},
 ];
 
 export default function CoursesPage() {
