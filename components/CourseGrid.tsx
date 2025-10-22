@@ -27,7 +27,7 @@ const SAMPLE = [
     slug: "cbse-icse-biology",
     price: 2999,
     desc: "Board-focused foundation course",
-    image: "/courses/cbse-icse-biology-course-biocharya.png",
+    image: "/courses/cbse-icse-biology-course.png",
   },
 ];
 
