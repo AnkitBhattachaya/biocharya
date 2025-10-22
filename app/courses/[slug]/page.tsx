@@ -1,83 +1,86 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import CourseLayout from "@/components/CourseLayout";
 
+const courses = {
+  "neet-biology-mastery": {
+    title: "NEET Biology Mastery",
+    tagline: "Crack NEET with conceptual clarity and precision.",
+    image: "/courses/neet-biology-course-biocharya.png",
+    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    points: [
+      "Complete NEET syllabus coverage",
+      "Concept-based NCERT learning",
+      "Live tests & personal guidance",
+    ],
+    price: 9999,
+  },
+  "class12-cbse-biology": {
+    title: "Class 12 CBSE Biology",
+    tagline: "Ace your boards with crystal-clear concepts.",
+    image: "/courses/class12-biology-course-biocharya.png",
+    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    points: [
+      "Complete NCERT coverage with examples",
+      "Board exam preparation & PYQs",
+      "Weekly tests and model papers",
+    ],
+    price: 4999,
+  },
+  "class11-cbse-biology": {
+    title: "Class 11 CBSE Biology",
+    tagline: "Build your foundation for NEET and beyond.",
+    image: "/courses/class11-biology-course-biocharya.png",
+    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    points: [
+      "Conceptual learning with interactive examples",
+      "Regular assignments & quizzes",
+      "Weekly mentor sessions",
+    ],
+    price: 3999,
+  },
+  "cbse-icse-biology": {
+    title: "CBSE / ICSE Biology",
+    tagline: "Strong foundation for boards and competitive exams.",
+    image: "/courses/cbse-icse-biology-course-biocharya.png",
+    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    points: [
+      "Board-specific conceptual clarity",
+      "Smart notes & PYQ practice",
+      "Doubt clearing + interactive sessions",
+    ],
+    price: 2999,
+  },
+};
+
 export default function CourseDetailsPage() {
-  const { slug } = useParams();
+  const params = useParams();
+  const [course, setCourse] = useState<any>(null);
 
-  const courses: any = {
-    "neet-biology-mastery": {
-      title: "NEET Biology Mastery",
-      tagline: "Crack NEET with conceptual clarity and precision.",
-      image: "/courses/neet-biology.png",
-      videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-      points: [
-        "Complete NEET syllabus coverage",
-        "Concept-based NCERT learning",
-        "Live tests & personal guidance",
-      ],
-      price: 9999,
-    },
-    "class12-cbse-biology": {
-      title: "Class 12 CBSE Biology",
-      tagline: "Ace your boards with crystal-clear concepts.",
-      image: "/courses/class12.png",
-      videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-      points: [
-        "Complete NCERT coverage with examples",
-        "Board exam preparation & PYQs",
-        "Weekly tests and model papers",
-      ],
-      price: 4999,
-    },
-    "class11-cbse-biology": {
-      title: "Class 11 CBSE Biology",
-      tagline: "Build your foundation for NEET and beyond.",
-      image: "/courses/class11.png",
-      videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-      points: [
-        "Conceptual learning with interactive examples",
-        "Regular assignments & quizzes",
-        "Weekly mentor sessions",
-      ],
-      price: 3999,
-    },
-    "cbse-icse-biology": {
-      title: "CBSE / ICSE Biology",
-      tagline: "Strong foundation for boards and competitive exams.",
-      image: "/courses/cbse-icse.png",
-      videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-      points: [
-        "Board-specific conceptual clarity",
-        "Smart notes & PYQ practice",
-        "Doubt clearing + interactive sessions",
-      ],
-      price: 2999,
-    },
-  };
+  useEffect(() => {
+    if (params?.slug && typeof params.slug === "string") {
+      const foundCourse = courses[params.slug];
+      setCourse(foundCourse || null);
+    }
+  }, [params]);
 
-  const course = courses[slug as string];
-
-  if (!course) {
+  if (!params?.slug) {
     return (
-      <div className="min-h-screen flex items-center justify-center text-center px-4">
-        <p className="text-2xl font-semibold text-gray-600">
-          ⚠️ Course not available. Please go back and try another course.
-        </p>
+      <div className="min-h-screen flex items-center justify-center text-gray-600 text-lg">
+        Loading course details...
       </div>
     );
   }
 
-  return (
-    <CourseLayout
-      title={course.title}
-      tagline={course.tagline}
-      image={course.image}
-      videoUrl={course.videoUrl}
-      points={course.points}
-      price={course.price}
-      slug={slug as string}
-    />
-  );
+  if (!course) {
+    return (
+      <div className="min-h-screen flex items-center justify-center text-gray-600 text-lg">
+        ⚠️ Course not available. Please go back and try another course.
+      </div>
+    );
+  }
+
+  return <CourseLayout {...course} slug={params.slug} />;
 }
