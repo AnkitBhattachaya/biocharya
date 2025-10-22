@@ -9,28 +9,28 @@ const courses = [
     title: "NEET Biology Mastery",
     description:
       "Comprehensive NEET Biology course covering every chapter with DPPs, PYQs, and live mentoring.",
-    image: "/courses/neet-biology.jpg",
+    image: "/courses/neet-biology-course-biocharya.png",
     slug: "neet-biology-mastery",
   },
   {
     title: "Class 12 CBSE Biology",
     description:
       "Master Class 12 Biology with concept-first learning, practical clarity, and exam-ready notes.",
-    image: "/courses/class12.jpg",
+    image: "/courses/class12-biology-course-biocharya.png",
     slug: "class12-cbse-biology",
   },
   {
     title: "Class 11 CBSE Biology",
     description:
       "Build strong foundations in Class 11 Biology with weekly practice tests and concept-based teaching.",
-    image: "/courses/class11.jpg",
+    image: "/courses/class11-biology-course-biocharya.png",
     slug: "class11-cbse-biology",
   },
   {
     title: "ICSE / WB Board Biology",
     description:
       "Board-focused Biology course with conceptual depth, visuals, and question-based learning.",
-    image: "/courses/icse-board.jpg",
+    image: "/courses/cbse-icse-biology-course-biocharya.png",
     slug: "icse-wb-biology",
   },
 ];
