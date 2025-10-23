@@ -60,17 +60,77 @@ export default function Home() {
             </Link>
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.6, duration: 0.8 }}
-            className="flex flex-wrap gap-6 pt-6 justify-center md:justify-start text-sm text-gray-600"
-          >
-            <div>🌱 Concept-Driven Learning</div>
-            <div>🏆 500+ Students</div>
-            <div>📍 Kolkata, India</div>
-          </motion.div>
-        </motion.div>
+          {/* ===== SCROLLING ANNOUNCEMENTS / OFFERS ===== */}
+<motion.div
+  initial={{ opacity: 0, y: 10 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ delay: 0.5, duration: 0.8 }}
+  className="relative overflow-hidden border-t border-b border-green-200 py-2 mt-6 bg-green-50/30"
+>
+  {/* Gradient Edges for Smooth Fade */}
+  <div className="absolute left-0 top-0 h-full w-10 bg-gradient-to-r from-white via-green-50/60 to-transparent z-10" />
+  <div className="absolute right-0 top-0 h-full w-10 bg-gradient-to-l from-white via-green-50/60 to-transparent z-10" />
+
+  {/* Scrolling Content */}
+  <div className="animate-marquee whitespace-nowrap flex items-center text-green-800 font-medium text-xs sm:text-sm md:text-base tracking-wide">
+    <a
+      href="https://wa.me/917980862920?text=Hi%20Ankit!%20I%27m%20interested%20in%20your%20Biology%20classes.%20Tell%20me%20more!"
+      target="_blank"
+      className="hover:text-green-600 transition-colors duration-200"
+    >
+      🎉 New NEET 2026 Batch Starting Soon!
+    </a>
+    &nbsp;&nbsp; | &nbsp;&nbsp;
+    <a
+      href="https://wa.me/917980862920?text=Hi%20Ankit!%20I%20want%20to%20register%20and%20know%20about%20offers!"
+      target="_blank"
+      className="hover:text-green-600 transition-colors duration-200"
+    >
+      💰 Register Now & Get ₹500 OFF on First Month!
+    </a>
+    &nbsp;&nbsp; | &nbsp;&nbsp;
+    <a
+      href="https://wa.me/917980862920?text=Hi%20Ankit!%20Can%20I%20book%20my%20Free%20Demo%20Class%20this%20Sunday?"
+      target="_blank"
+      className="hover:text-green-600 transition-colors duration-200"
+    >
+      🔥 Free Demo Class Every Sunday — Limited Seats!
+    </a>
+    &nbsp;&nbsp; | &nbsp;&nbsp;
+    🌟 95%+ Board Results in 2024 — Join the Success!
+    &nbsp;&nbsp; | &nbsp;&nbsp;
+    <a
+      href="https://wa.me/917980862920"
+      target="_blank"
+      className="ml-2 bg-green-700 hover:bg-green-800 text-white px-3 py-1 rounded-md text-xs sm:text-sm font-semibold shadow-sm transition-all duration-200"
+    >
+      💬 Chat on WhatsApp
+    </a>
+  </div>
+
+  {/* Animation Keyframes */}
+  <style jsx>{`
+    @keyframes marquee {
+      0% {
+        transform: translateX(100%);
+      }
+      100% {
+        transform: translateX(-100%);
+      }
+    }
+    .animate-marquee {
+      display: inline-flex;
+      animation: marquee 18s linear infinite;
+      min-width: max-content;
+    }
+
+    @media (max-width: 640px) {
+      .animate-marquee {
+        animation-duration: 30s; /* slower on mobile for readability */
+      }
+    }
+  `}</style>
+</motion.div>
 
         {/* RIGHT IMAGE SECTION */}
         <motion.div
