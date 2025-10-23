@@ -200,6 +200,8 @@ export default function Home() {
           }
           .whatsapp-btn {
             margin-left: 1.5rem;
+            margin-right: 2rem;
+            flex-shrink; 0;
           }
           @keyframes scroll-left {
             0% {
