@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { BookOpen, Users, ClipboardCheck, Brain } from "lucide-react";
 import CourseGrid from "../components/CourseGrid";
 
 export default function Home() {
@@ -35,8 +36,8 @@ export default function Home() {
             className="text-gray-700 text-lg max-w-xl mx-auto md:mx-0"
           >
             Led by <strong>Ankit Bhattacharya</strong>, BioCharya trains{" "}
-            <strong>500+ students</strong> through small batches, conceptual clarity,
-            and exam-proven strategies.
+            <strong>500+ students</strong> through small batches, conceptual
+            clarity, and exam-proven strategies.
           </motion.p>
 
           {/* ===== BUTTONS ===== */}
@@ -86,11 +87,9 @@ export default function Home() {
         transition={{ delay: 0.5, duration: 0.8 }}
         className="relative overflow-hidden border-t border-b border-green-200 py-2 bg-green-50/30"
       >
-        {/* Gradient Edges for Smooth Fade */}
         <div className="absolute left-0 top-0 h-full w-10 bg-gradient-to-r from-white via-green-50/60 to-transparent z-10" />
         <div className="absolute right-0 top-0 h-full w-10 bg-gradient-to-l from-white via-green-50/60 to-transparent z-10" />
 
-        {/* Scrolling Content */}
         <div className="animate-marquee whitespace-nowrap flex items-center text-green-800 font-medium text-xs sm:text-sm md:text-base tracking-wide">
           <a
             href="https://wa.me/917980862920?text=Hi%20Ankit!%20I%27m%20interested%20in%20your%20Biology%20classes.%20Tell%20me%20more!"
@@ -127,7 +126,6 @@ export default function Home() {
           </a>
         </div>
 
-        {/* Animation Keyframes */}
         <style jsx>{`
           @keyframes marquee {
             0% {
@@ -145,7 +143,7 @@ export default function Home() {
 
           @media (max-width: 640px) {
             .animate-marquee {
-              animation-duration: 30s; /* slower on mobile for readability */
+              animation-duration: 30s;
             }
           }
         `}</style>
@@ -164,9 +162,6 @@ export default function Home() {
         </h2>
         <CourseGrid />
       </motion.section>
-    </main>
-  );
-}
 
       {/* ===== WHY BIOCHARYA WORKS ===== */}
       <motion.section
@@ -211,6 +206,8 @@ export default function Home() {
             </motion.div>
           ))}
         </div>
+      </motion.section>
+
       {/* ===== MEET YOUR MENTOR ===== */}
       <motion.section
         initial={{ opacity: 0, y: 40 }}
