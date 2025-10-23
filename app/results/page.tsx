@@ -1,75 +1,31 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Link from "next/link";
 import Image from "next/image";
-
-// 🎬 Video Testimonials (editable later)
-const videoTestimonials = [
-  {
-    title: "From Hero to Ranker, DR...",
-    video: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-  },
-  {
-    title: "I Finally Understood Biology 🔬",
-    video: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-  },
-  {
-    title: "Boards & NEET, Both Cracked 🔥",
-    video: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-  },
-];
-
-// 💬 Text Testimonials (editable)
-const textTestimonials = [
-  {
-    name: "Riya Mandal",
-    image: "/students/riya.jpg",
-    text: "Before BioCharya, I memorized blindly. Now I understand biology deeply — I topped my school exams!",
-  },
-  {
-    name: "Aritra Sen",
-    image: "/students/aritra.jpg",
-    text: "Ankit sir made NEET Biology feel logical. His way of explaining genetics changed everything.",
-  },
-  {
-    name: "Sohini Das",
-    image: "/students/sohini.jpg",
-    text: "Every concept became crystal clear. BioCharya is not just classes — it’s mentorship.",
-  },
-  {
-    name: "Rudra Chatterjee",
-    image: "/students/rudra.jpg",
-    text: "I was scared of Human Physiology — now it's my strongest unit. Sir’s daily quizzes really built my confidence!",
-  },
-  {
-    name: "Ananya Ghosh",
-    image: "/students/ananya.jpg",
-    text: "BioCharya gave me clarity like never before. Even the toughest NCERT lines started making sense.",
-  },
-  {
-    name: "Souvik Mukherjee",
-    image: "/students/souvik.jpg",
-    text: "Ankit Sir’s one-liners are pure gold. I revised everything in the last 15 days just from his notes!",
-  },
-  {
-    name: "Madhurima Pal",
-    image: "/students/madhurima.jpg",
-    text: "He doesn’t just teach — he makes you fall in love with Biology. Thank you for believing in us, sir!",
-  },
-  {
-    name: "Debopriya Dey",
-    image: "/students/debopriya.jpg",
-    text: "Joining BioCharya was the best decision of my NEET journey. Classes are fun, structured, and unforgettable.",
-  },
-  {
-    name: "Rohit Banerjee",
-    image: "/students/rohit.jpg",
-    text: "Sir’s way of connecting real-life logic to biology made me realize — I can actually do this!",
-  },
-];
+import Link from "next/link";
 
 export default function ResultsPage() {
+  const toppers = [
+    {
+      name: "Aritra Dutta",
+      score: "NEET 2024 – 685/720",
+      quote: "BioCharya made every concept crystal clear. I actually enjoyed learning Biology!",
+      image: "/results/aritra.jpg",
+    },
+    {
+      name: "Riya Sen",
+      score: "Class 12 CBSE – 97%",
+      quote: "Ankit Sir’s guidance helped me stay confident throughout the boards.",
+      image: "/results/riya.jpg",
+    },
+    {
+      name: "Kunal Saha",
+      score: "NEET 2023 – 672/720",
+      quote: "Regular DPPs and conceptual teaching helped me stay consistent.",
+      image: "/results/kunal.jpg",
+    },
+  ];
+
   return (
     <main className="pt-28 pb-20 bg-lightbg text-textdark">
       {/* ===== HERO SECTION ===== */}
@@ -77,7 +33,7 @@ export default function ResultsPage() {
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className="text-center px-6 md:px-20 mb-16"
+        className="text-center px-6 md:px-20 py-16 bg-gradient-to-b from-green-50 to-white"
       >
         <motion.h1
           className="text-4xl md:text-5xl font-extrabold text-green-800 mb-4"
@@ -85,101 +41,81 @@ export default function ResultsPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
         >
-          They Made Me a God-Tier Teacher 🔥
+          Proven Results. Real Students. Real Success.
         </motion.h1>
-        <p className="text-gray-700 text-lg max-w-2xl mx-auto">
-          Let’s hear directly from them — unfiltered stories, straight from my students.
+        <p className="text-gray-700 text-lg max-w-2xl mx-auto leading-relaxed">
+          Every success story you see here started with one decision — joining BioCharya. 
+          These students proved that with the right guidance, Biology can be mastered.
         </p>
       </motion.section>
 
-      {/* ===== VIDEO GALLERY ===== */}
-      <section className="px-6 md:px-20 mb-20">
-        <motion.h2
-          className="text-3xl font-bold text-center text-green-700 mb-6"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-        >
-          They Changed Their Own Game — I Was Lucky to Be Part of It 🔥
-        </motion.h2>
-        <p className="text-center text-gray-600 mb-10">
-          Real stories. Real transformations. Watch what happens when clarity meets consistency.
-        </p>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-          {videoTestimonials.map((item, index) => (
-            <motion.div
-              key={index}
-              className="rounded-xl overflow-hidden shadow-md hover:shadow-xl bg-white border border-gray-100 transition-all duration-300 hover:-translate-y-2"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1, duration: 0.5 }}
-              viewport={{ once: true }}
-            >
-              <div className="aspect-video w-full bg-black">
-                <iframe
-                  src={item.video}
-                  title={item.title}
-                  allowFullScreen
-                  className="w-full h-full object-cover"
-                ></iframe>
-              </div>
-              <div className="p-4 text-center font-medium text-gray-700">
-                {item.title}
-              </div>
-            </motion.div>
-          ))}
-        </div>
+      {/* ===== ACHIEVEMENT STATS ===== */}
+      <section className="bg-primary text-white py-6 text-center text-sm sm:text-base font-medium tracking-wide">
+        🌿 95% Board Success • 🧠 680+ Average NEET Scores • 🎓 500+ Happy Students
       </section>
 
-      {/* ===== TEXT TESTIMONIALS ===== */}
-      <section className="bg-green-50 py-16 px-6 md:px-20">
-        <motion.h2
-          className="text-3xl font-bold text-center text-green-800 mb-10"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-        >
-          If You Still Need Proof, Read This 👇
-        </motion.h2>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-6xl mx-auto">
-          {textTestimonials.map((t, i) => (
-            <motion.div
-              key={i}
-              className="bg-white rounded-2xl shadow-md hover:shadow-xl p-6 border-t-4 border-green-700 transition-all duration-300 hover:-translate-y-2 text-center"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.05, duration: 0.5 }}
-              viewport={{ once: true }}
-            >
-              <div className="w-20 h-20 mx-auto mb-4 relative rounded-full overflow-hidden border-2 border-green-600">
-                <Image
-                  src={t.image}
-                  alt={t.name}
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <h3 className="font-semibold text-lg mb-2">{t.name}</h3>
-              <p className="text-gray-600 text-sm leading-relaxed">{t.text}</p>
-            </motion.div>
-          ))}
-        </div>
-      </section>
-
-      {/* ===== CTA SECTION ===== */}
+      {/* ===== TOPPERS GRID ===== */}
       <motion.section
-        className="text-center py-20 px-6 bg-white"
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
+        className="px-6 md:px-20 py-16 bg-white"
+      >
+        <h2 className="text-3xl font-bold text-center text-primary mb-10">
+          Our Top Performers
+        </h2>
+        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          {toppers.map((student, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: i * 0.1 }}
+              viewport={{ once: true }}
+              className="bg-green-50 rounded-xl p-6 shadow hover:shadow-lg transition-all duration-300 flex flex-col items-center text-center border-t-4 border-primary"
+            >
+              <div className="w-32 h-32 relative rounded-full overflow-hidden border-4 border-green-600 mb-4">
+                <Image
+                  src={student.image}
+                  alt={student.name}
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <h3 className="font-bold text-lg text-primary">{student.name}</h3>
+              <p className="text-sm text-gray-600 mb-2">{student.score}</p>
+              <p className="text-gray-700 text-sm italic leading-relaxed">
+                “{student.quote}”
+              </p>
+            </motion.div>
+          ))}
+        </div>
+      </motion.section>
+
+      {/* ===== TESTIMONIAL STRIP (OPTIONAL MINI BAND) ===== */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+        className="bg-green-700 text-white text-center py-6 text-sm md:text-base"
+      >
+        “Clarity Creates Confidence.” — The BioCharya Promise 🌱
+      </motion.div>
+
+      {/* ===== CALL TO ACTION ===== */}
+      <motion.section
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+        className="text-center py-20 px-6 bg-green-50"
       >
         <h2 className="text-3xl md:text-4xl font-bold text-green-800 mb-4">
           Your Story Could Be Next 🌱
         </h2>
-        <p className="text-gray-700 mb-6">
+        <p className="text-gray-700 mb-6 max-w-xl mx-auto">
           Join BioCharya today — where clarity turns into confidence, and students turn into achievers.
         </p>
         <Link
