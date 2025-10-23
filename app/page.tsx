@@ -137,7 +137,6 @@ export default function Home() {
     </main>
   );
 }
-
         {/* RIGHT IMAGE SECTION */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95, x: 30 }}
