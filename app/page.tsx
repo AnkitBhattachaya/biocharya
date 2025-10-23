@@ -159,7 +159,7 @@ export default function Home() {
       >
         <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-10 items-center">
           <motion.img
-            src="/ankit-bhattacharya.png"
+            src="/ankit-sir-biocharya.png"
             alt="Ankit Bhattacharya"
             className="rounded-2xl shadow-lg w-full object-cover"
             initial={{ opacity: 0, x: -40 }}
