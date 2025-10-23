@@ -329,8 +329,8 @@ export default function Home() {
               <Image
                 src="/ankit-sir-biocharya.png"
                 alt="Ankit Bhattacharya"
-                width={600}
-                height={600}
+                width={1080}
+                height={1350}
                 priority
                 className="rounded-2x1 shadow-lg w-full max-w-md h-auto object-contain"
               />
