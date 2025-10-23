@@ -91,75 +91,142 @@ export default function Home() {
         <div className="absolute left-0 top-0 h-full w-10 bg-gradient-to-r from-white via-green-50/60 to-transparent z-10" />
         <div className="absolute right-0 top-0 h-full w-10 bg-gradient-to-l from-white via-green-50/60 to-transparent z-10" />
 
-        {/* Seamless Continuous Marquee */}
-        <div className="marquee">
-          <div className="marquee__content">
-            <a
-              href="https://wa.me/917980862920?text=Hi%20Ankit!%20I%27m%20interested%20in%20your%20Biology%20classes.%20Tell%20me%20more!"
-              target="_blank"
-            >
-              🎉 New NEET 2026 Batch Starting Soon!
-            </a>
-            <span> | 💰 Register Now & Get ₹500 OFF on First Month!</span>
-            <span> | 🔥 Free Demo Class Every Sunday — Limited Seats!</span>
-            <span> | 🌟 95%+ Board Results in 2024 — Join the Success!</span>
-            <a
-              href="https://wa.me/917980862920"
-              target="_blank"
-              className="ml-2 bg-green-700 hover:bg-green-800 text-white px-3 py-1 rounded-md text-xs sm:text-sm font-semibold shadow-sm transition-all duration-200"
-            >
-              💬 Chat on WhatsApp
-            </a>
-          </div>
+        {/* Seamless Continuous Marquee — fully clickable + spaced */}
+<div className="marquee">
+  <div className="marquee__content">
+    <a
+      href="https://wa.me/917980862920?text=Hi%20Ankit!%20Tell%20me%20more%20about%20NEET%202026%20batches!"
+      target="_blank"
+      className="offer-link"
+    >
+      🎉 New NEET 2026 Batch Starting Soon!
+    </a>
 
-          {/* duplicate for smooth infinite loop */}
-          <div className="marquee__content" aria-hidden="true">
-            <a
-              href="https://wa.me/917980862920?text=Hi%20Ankit!%20I%27m%20interested%20in%20your%20Biology%20classes.%20Tell%20me%20more!"
-              target="_blank"
-            >
-              🎉 New NEET 2026 Batch Starting Soon!
-            </a>
-            <span> | 💰 Register Now & Get ₹500 OFF on First Month!</span>
-            <span> | 🔥 Free Demo Class Every Sunday — Limited Seats!</span>
-            <span> | 🌟 95%+ Board Results in 2024 — Join the Success!</span>
-            <a
-              href="https://wa.me/917980862920"
-              target="_blank"
-              className="ml-2 bg-green-700 hover:bg-green-800 text-white px-3 py-1 rounded-md text-xs sm:text-sm font-semibold shadow-sm transition-all duration-200"
-            >
-              💬 Chat on WhatsApp
-            </a>
-          </div>
-        </div>
+    <a
+      href="https://wa.me/917980862920?text=Hi%20Ankit!%20I%20want%20to%20register%20and%20know%20about%20offers!"
+      target="_blank"
+      className="offer-link"
+    >
+      💰 Register Now & Get ₹500 OFF on First Month!
+    </a>
 
-        <style jsx>{`
-          .marquee {
-            position: relative;
-            display: flex;
-            overflow: hidden;
-            white-space: nowrap;
-          }
-          .marquee__content {
-            display: inline-flex;
-            gap: 1rem;
-            animation: scroll-left 15s linear infinite;
-          }
-          @keyframes scroll-left {
-            0% {
-              transform: translateX(0);
-            }
-            100% {
-              transform: translateX(-100%);
-            }
-          }
-          @media (max-width: 640px) {
-            .marquee__content {
-              animation-duration: 25s;
-            }
-          }
-        `}</style>
-      </motion.div>
+    <a
+      href="https://wa.me/917980862920?text=Hi%20Ankit!%20Can%20I%20book%20my%20Free%20Demo%20Class%20this%20Sunday?"
+      target="_blank"
+      className="offer-link"
+    >
+      🔥 Free Demo Class Every Sunday — Limited Seats!
+    </a>
+
+    <a
+      href="https://wa.me/917980862920?text=Hi%20Ankit!%20I%20want%20to%20know%20your%20board%20results!"
+      target="_blank"
+      className="offer-link"
+    >
+      🌟 95%+ Board Results in 2024 — Join the Success!
+    </a>
+
+    <div className="whatsapp-btn">
+      <a
+        href="https://wa.me/917980862920"
+        target="_blank"
+        className="bg-green-700 hover:bg-green-800 text-white px-3 py-1 rounded-md text-xs sm:text-sm font-semibold shadow-sm transition-all duration-200"
+      >
+        💬 Chat on WhatsApp
+      </a>
+    </div>
+  </div>
+
+  {/* duplicate for smooth infinite loop */}
+  <div className="marquee__content" aria-hidden="true">
+    <a
+      href="https://wa.me/917980862920?text=Hi%20Ankit!%20Tell%20me%20more%20about%20NEET%202026%20batches!"
+      target="_blank"
+      className="offer-link"
+    >
+      🎉 New NEET 2026 Batch Starting Soon!
+    </a>
+
+    <a
+      href="https://wa.me/917980862920?text=Hi%20Ankit!%20I%20want%20to%20register%20and%20know%20about%20offers!"
+      target="_blank"
+      className="offer-link"
+    >
+      💰 Register Now & Get ₹500 OFF on First Month!
+    </a>
+
+    <a
+      href="https://wa.me/917980862920?text=Hi%20Ankit!%20Can%20I%20book%20my%20Free%20Demo%20Class%20this%20Sunday?"
+      target="_blank"
+      className="offer-link"
+    >
+      🔥 Free Demo Class Every Sunday — Limited Seats!
+    </a>
+
+    <a
+      href="https://wa.me/917980862920?text=Hi%20Ankit!%20I%20want%20to%20know%20your%20board%20results!"
+      target="_blank"
+      className="offer-link"
+    >
+      🌟 95%+ Board Results in 2024 — Join the Success!
+    </a>
+
+    <div className="whatsapp-btn">
+      <a
+        href="https://wa.me/917980862920"
+        target="_blank"
+        className="bg-green-700 hover:bg-green-800 text-white px-3 py-1 rounded-md text-xs sm:text-sm font-semibold shadow-sm transition-all duration-200"
+      >
+        💬 Chat on WhatsApp
+      </a>
+    </div>
+  </div>
+</div>
+
+<style jsx>{`
+  .marquee {
+    position: relative;
+    display: flex;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .marquee__content {
+    display: inline-flex;
+    align-items: center;
+    gap: 2rem; /* ✅ adds space between each offer */
+    animation: scroll-left 15s linear infinite;
+  }
+  .offer-link {
+    color: #166534; /* green-800 */
+    font-weight: 500;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: color 0.2s ease-in-out;
+  }
+  .offer-link:hover {
+    color: #15803d; /* hover green-700 */
+  }
+  .whatsapp-btn {
+    margin-left: 1.5rem; /* ✅ spacing before WhatsApp button */
+  }
+  @keyframes scroll-left {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+  @media (max-width: 640px) {
+    .marquee__content {
+      animation-duration: 25s;
+      gap: 1rem;
+    }
+    .offer-link {
+      font-size: 0.8rem;
+    }
+  }
+`}</style>
 
       {/* ===== COURSES SECTION ===== */}
       <motion.section
