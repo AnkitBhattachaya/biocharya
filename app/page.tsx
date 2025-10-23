@@ -211,8 +211,6 @@ export default function Home() {
             </motion.div>
           ))}
         </div>
-      </motion.section>
-
       {/* ===== MEET YOUR MENTOR ===== */}
       <motion.section
         initial={{ opacity: 0, y: 40 }}
