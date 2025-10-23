@@ -329,9 +329,10 @@ export default function Home() {
               <Image
                 src="/ankit-sir-biocharya.png"
                 alt="Ankit Bhattacharya"
-                fill
-                sizes="(min-width: 1024px) 50vw, 100vw"
-                className="object-cover"
+                width={600}
+                height={600}
+                priority
+                className="rounded-2x1 shadow-lg w-full max-w-md h-auto object-contain"
               />
             </div>
           </motion.div>
