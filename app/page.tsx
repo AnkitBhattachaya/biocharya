@@ -3,7 +3,6 @@
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { BookOpen, Users, ClipboardCheck, Brain } from "lucide-react";
 import CourseGrid from "../components/CourseGrid";
 
 export default function Home() {
@@ -60,6 +59,23 @@ export default function Home() {
               📘 Explore Courses
             </Link>
           </motion.div>
+        </motion.div>
+
+        {/* RIGHT IMAGE SECTION */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95, x: 30 }}
+          animate={{ opacity: 1, scale: 1, x: 0 }}
+          transition={{ duration: 0.9, ease: "easeOut" }}
+          className="flex-1 flex justify-center md:justify-end"
+        >
+          <Image
+            src="/hero-banner.png"
+            alt="BioCharya | Hate Memorising Biology? NOT Anymore"
+            width={1000}
+            height={600}
+            priority
+            className="rounded-2xl shadow-2xl w-full max-w-lg md:max-w-2xl object-cover hover:scale-[1.02] transition-transform duration-500"
+          />
         </motion.div>
       </section>
 
@@ -134,26 +150,6 @@ export default function Home() {
           }
         `}</style>
       </motion.div>
-    </main>
-  );
-}
-        {/* RIGHT IMAGE SECTION */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95, x: 30 }}
-          animate={{ opacity: 1, scale: 1, x: 0 }}
-          transition={{ duration: 0.9, ease: "easeOut" }}
-          className="flex-1 flex justify-center md:justify-end"
-        >
-          <Image
-            src="/hero-banner.png"
-            alt="BioCharya | Hate Memorising Biology? NOT Anymore"
-            width={1000}
-            height={600}
-            priority
-            className="rounded-2xl shadow-2xl w-full max-w-lg md:max-w-2xl object-cover hover:scale-[1.02] transition-transform duration-500"
-          />
-        </motion.div>
-      </section>
 
       {/* ===== COURSES SECTION ===== */}
       <motion.section
@@ -168,6 +164,9 @@ export default function Home() {
         </h2>
         <CourseGrid />
       </motion.section>
+    </main>
+  );
+}
 
       {/* ===== WHY BIOCHARYA WORKS ===== */}
       <motion.section
