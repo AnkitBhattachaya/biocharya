@@ -10,7 +10,7 @@ import { BookOpen, Download, Youtube, Trophy, Users, ClipboardCheck } from "luci
 const allNotes = [
   { title: "Fundamental Unit of Life", className: "Class 9 CBSE", driveLink: "#" },
   { title: "Tissues", className: "Class 9 CBSE", driveLink: "#" },
-  { title: "Diversity in Living Organisms", className: "Class 9 CBSE", driveLink: "#" },
+  { title: "Improvement in Food Resources", className: "Class 9 CBSE", driveLink: "#" },
   { title: "Life Processes", className: "Class 10 CBSE", driveLink: "#" },
   { title: "Control and Coordination", className: "Class 10 CBSE", driveLink: "#" },
   { title: "Heredity and Evolution", className: "Class 10 CBSE", driveLink: "#" },
@@ -58,17 +58,16 @@ export default function NotesPageClient() {
           className="relative z-10 max-w-3xl mx-auto"
         >
           <h1 className="text-4xl md:text-5xl font-extrabold text-green-800 mb-4">
-            Master NEET & Boards with Clear Notes 📘
+            Quick Notes by BioCharya
           </h1>
           <p className="text-gray-700 text-lg mb-6">
-            Concept-based Biology Notes by <strong>Ankit Bhattacharya</strong> — handwritten,
-            concise, and built for retention. Trusted by 500+ toppers from Kolkata and beyond.
+            Concept-based Quick Notes by <strong>Sir Ankit</strong>
           </p>
           <Link
             href="/demo"
             className="bg-green-700 text-white px-8 py-3 rounded-lg font-semibold hover:bg-green-800 shadow-md transition"
           >
-            🎓 Join Free Demo Class
+            Join Free Demo Class
           </Link>
         </motion.div>
       </section>
