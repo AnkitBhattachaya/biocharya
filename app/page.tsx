@@ -51,13 +51,13 @@ export default function Home() {
               href="/demo"
               className="bg-primary text-white px-8 py-3 rounded-lg font-semibold shadow-md hover:scale-105 hover:bg-green-800 transition-all duration-300"
             >
-              🎓 Join Free Demo Class
+               Join Free Demo Class
             </Link>
             <Link
               href="/courses"
               className="border-2 border-primary text-primary px-8 py-3 rounded-lg font-semibold hover:bg-green-50 hover:scale-105 transition-all duration-300"
             >
-              📘 Explore Courses
+               Explore Courses
             </Link>
           </motion.div>
         </motion.div>
