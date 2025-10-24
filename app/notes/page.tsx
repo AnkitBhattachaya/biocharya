@@ -1,4 +1,4 @@
-import NotesPageClient from "./NotesPageClient";
+import NotesPageClient from "./NotesClient";
 
 export const metadata = {
   title: "NEET Biology Notes | Class 11 & 12 | BioCharya by Ankit Bhattacharya",
@@ -41,5 +41,5 @@ export const metadata = {
 };
 
 export default function NotesPage() {
-  return <NotesPageClient />;
+  return <NotesClient />;
 }
