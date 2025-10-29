@@ -51,7 +51,7 @@ const courseData: Record<string, Course> = {
   "cbse-icse-biology": {
     title: "CBSE / ICSE Biology",
     tagline: "Strong foundation for boards and competitive exams.",
-    image: "/courses/cbse-icse-biology-course-biocharya.png",
+    image: "/courses/cbse-icse-biology-course.png",
     videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
     points: [
       "Board-specific conceptual clarity",
