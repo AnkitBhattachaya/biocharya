@@ -104,7 +104,7 @@ export default function DemoPage() {
         <div className="relative aspect-video rounded-2xl overflow-hidden shadow-lg border border-green-100">
           <iframe
             className="w-full h-full"
-            src="https://youtu.be/e92vn0_p2TY?si=ln3T01LVaJhofTYB"
+            src="https://www.youtube.com/embed/e92vn0_p2TY?rel=0&modestbranding=1"
             title="Demo topic - Counter Current Mechanism"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
