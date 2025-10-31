@@ -104,8 +104,8 @@ export default function DemoPage() {
         <div className="relative aspect-video rounded-2xl overflow-hidden shadow-lg border border-green-100">
           <iframe
             className="w-full h-full"
-            src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
-            title="BioCharya Demo Class"
+            src="https://youtu.be/e92vn0_p2TY?si=ln3T01LVaJhofTYB"
+            title="Demo topic - Counter Current Mechanism"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           ></iframe>
@@ -169,7 +169,7 @@ export default function DemoPage() {
               <p className="text-green-700 mt-2">
                 {score === 3
                   ? "Excellent! You’re ready for NEET Biology!"
-                  : "Good try! You’ll master these topics with BioCharya."}
+                  : "Don't worry! You’ll master these topics with BioCharya."}
               </p>
             </motion.div>
           )}
